@@ -1,7 +1,7 @@
 {
   "name": "gulp-connect",
-  "version": "0.1.0",
-  "description": "Gulp plugin",
+  "version": "0.1.1",
+  "description": "Gulp plugin connect to server and opening browser",
   "license": "MIT",
   "repository": {
     "type": "git",
