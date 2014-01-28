@@ -69,6 +69,7 @@ gulp.task "default", ->
 #### options.root
 
 Type: `String`
+
 Default: `app`
 
 The root path
@@ -76,6 +77,7 @@ The root path
 #### options.port
 
 Type: `Number`
+
 Default: `3000`
 
 The connect port
@@ -83,11 +85,13 @@ The connect port
 #### options.open
 
 Type: `Boolean or Object`
+
 Default: `{}`
 
 #### options.open.file
 
 Type: `String`
+
 Default: `index.html`
 
 The open file
@@ -95,6 +99,7 @@ The open file
 #### options.open.browser
 
 Type: `String`
+
 Default: `chrome`
 
 The type of browser
