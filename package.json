@@ -16,7 +16,7 @@
     "node": ">=0.10.0"
   },
   "keywords": [
-    "gulpplugin",
+    "gulpfriendly",
     "connect",
     "open",
     "server",

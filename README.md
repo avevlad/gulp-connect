@@ -31,6 +31,23 @@ gulp.task('default', function () {
 });
 ```
 
+#### or
+
+```js
+var connect = require('gulp-connect');
+
+gulp.task('connect', connect({
+  root: __dirname,
+  port: 3000,
+  open: false
+}));
+
+gulp.task('default', function () {
+  gulp.run('connect');
+});
+```
+
+
 coffee
 ```coffee
 connect = require("gulp-connect")
@@ -46,30 +63,41 @@ gulp.task "default", ->
 
 ```
 
+
 ## API
-
-### connect(options)
-
 
 #### options.root
 
 Type: `String`
 Default: `app`
 
+The root path
+
 #### options.port
 
 Type: `Number`
 Default: `3000`
+
+The connect port
+
+#### options.open
+
+Type: `Boolean or Object`
+Default: `{}`
 
 #### options.open.file
 
 Type: `String`
 Default: `index.html`
 
+The open file
+
 #### options.open.browser
 
 Type: `String`
 Default: `chrome`
+
+The type of browser
 
 
 ## License
