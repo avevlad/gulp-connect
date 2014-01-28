@@ -1,0 +1,32 @@
+{
+  "name": "gulp-connect",
+  "version": "0.1.0",
+  "description": "Gulp plugin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/avevlad/gulp-connect"
+  },
+  "author": {
+    "name": "Vladislav Derjavin",
+    "email": "dev@vld.me",
+    "url": "http://vld.me"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "gulpplugin",
+    "connect",
+    "open",
+    "server",
+    "url",
+    "chrome",
+    "browser"
+  ],
+  "dependencies": {
+    "gulp-util": "~2.2.13",
+    "open": "0.0.4",
+    "connect": "~2.12.0"
+  }
+}
