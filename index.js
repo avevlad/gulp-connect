@@ -27,7 +27,7 @@ module.exports = function (opt) {
       util.log(util.colors.green('Server started on ' + opt.port + ' port'));
       if (opt.open !== false) {
         open('http://localhost:' + opt.port + '/' + opt.open.file, opt.open.browser);
-        util.log(util.colors.green('Open ' + opt.open.file + ' in ' + opt.open.browser));
+        util.log(util.colors.green('Opened ' + opt.open.file + ' in ' + opt.open.browser));
       }
     });
   };
