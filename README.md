@@ -75,26 +75,26 @@ The root path
 
 #### options.port
 
-Type: `Number`
+Type: `Number`  
 Default: `3000`
 
 The connect port
 
 #### options.open
 
-Type: `Boolean or Object`
+Type: `Boolean or Object`  
 Default: `{}`
 
 #### options.open.file
 
-Type: `String`
+Type: `String`  
 Default: `index.html`
 
 The open file
 
 #### options.open.browser
 
-Type: `String`
+Type: `String`  
 Default: `chrome`
 
 The type of browser
