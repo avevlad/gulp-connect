@@ -13,7 +13,7 @@ npm install --save-dev gulp-connect
 
 ## Example
 
-js
+####js
 ```js
 var connect = require('gulp-connect');
 
@@ -31,7 +31,7 @@ gulp.task('default', function () {
 });
 ```
 
-#### or
+**or**
 
 ```js
 var connect = require('gulp-connect');
@@ -48,7 +48,7 @@ gulp.task('default', function () {
 ```
 
 
-coffee
+####coffee
 ```coffee
 connect = require("gulp-connect")
 gulp.task "connect", connect(
