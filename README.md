@@ -26,9 +26,7 @@ gulp.task('connect', connect({
   }
 }));
 
-gulp.task('default', function () {
-  gulp.run('connect');
-});
+gulp.task('default', ['connect']);
 ```
 
 **or**
@@ -42,9 +40,7 @@ gulp.task('connect', connect({
   open: false
 }));
 
-gulp.task('default', function () {
-  gulp.run('connect');
-});
+gulp.task('default', ['connect']);
 ```
 
 
@@ -58,8 +54,7 @@ gulp.task "connect", connect(
     file: "index.html"
     browser: "chrome"
 )
-gulp.task "default", ->
-  gulp.run "connect"
+gulp.task "default", ["connect"]
 
 ```
 
