@@ -22,7 +22,7 @@ gulp.task('connect', connect({
   port: 3000,
   open: {
     file: 'index.html',
-    browser: 'chrome'
+    browser: 'Google Chrome'
   }
 }));
 
@@ -52,7 +52,7 @@ gulp.task "connect", connect(
   port: 3000
   open:
     file: "index.html"
-    browser: "chrome"
+    browser: "Google Chrome"
 )
 gulp.task "default", ["connect"]
 
