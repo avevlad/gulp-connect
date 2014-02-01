@@ -75,7 +75,7 @@ The connect port
 
 #### options.open
 
-Type: `Object`
+Type: `Object`  
 Default: `{}`
 
 #### options.open.file
