@@ -19,11 +19,7 @@ var connect = require('gulp-connect');
 
 gulp.task('connect', connect({
   root: __dirname + '/app',
-  port: 3000,
-  open: {
-    file: 'index.html',
-    browser: 'Google Chrome'
-  }
+  port: 3000
 }));
 
 gulp.task('default', ['connect']);
@@ -35,9 +31,12 @@ gulp.task('default', ['connect']);
 var connect = require('gulp-connect');
 
 gulp.task('connect', connect({
-  root: __dirname,
+  root: __dirname + '/app',
   port: 3000,
-  open: false
+  open: {
+    file: 'index.html',
+    browser: 'chrome' // if not working OS X browser: 'Google Chrome'
+  }
 }));
 
 gulp.task('default', ['connect']);
@@ -46,16 +45,15 @@ gulp.task('default', ['connect']);
 
 ####coffee
 ```coffee
-connect = require("gulp-connect")
-gulp.task "connect", connect(
-  root: __dirname + "/app"
+connect = require('gulp-connect')
+gulp.task 'connect', connect(
+  root: __dirname + '/app'
   port: 3000
   open:
-    file: "index.html"
-    browser: "Google Chrome"
+    file: 'index.html'
+    browser: 'chrome'
 )
-gulp.task "default", ["connect"]
-
+gulp.task 'default', ['connect']
 ```
 
 
@@ -77,7 +75,7 @@ The connect port
 
 #### options.open
 
-Type: `Boolean or Object`  
+Type: `Object`
 Default: `{}`
 
 #### options.open.file

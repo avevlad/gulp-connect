@@ -8,7 +8,7 @@ module.exports = function (opt) {
   opt = opt || {};
   if (!opt.root) opt.root = 'app';
   if (!opt.port) opt.port = 3000;
-  if (opt.open !== false) {
+  if (opt.open) {
     if (!opt.open) opt.open = {};
     if (!opt.open.file) opt.open.file = 'index.html';
     if (!opt.open.browser) opt.open.browser = 'chrome';
@@ -25,7 +25,7 @@ module.exports = function (opt) {
 
     http.createServer(app).listen(opt.port, function () {
       util.log(util.colors.green('Server started on ' + opt.port + ' port'));
-      if (opt.open !== false) {
+      if (opt.open) {
         open('http://localhost:' + opt.port + '/' + opt.open.file, opt.open.browser);
         util.log(util.colors.green('Opened ' + opt.open.file + ' in ' + opt.open.browser));
       }
