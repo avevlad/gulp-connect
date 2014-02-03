@@ -73,6 +73,13 @@ Default: `3000`
 
 The connect port
 
+#### options.rewrite
+
+Type: `String`
+Default: undefined
+
+File used when no match found (e.g. "404.html")
+
 #### options.open
 
 Type: `Object`  

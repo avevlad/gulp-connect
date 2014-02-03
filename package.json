@@ -27,6 +27,7 @@
   "dependencies": {
     "gulp-util": "~2.2.13",
     "open": "0.0.4",
-    "connect": "~2.12.0"
+    "connect": "~2.12.0",
+    "file-utils": "~0.2.0"
   }
 }
