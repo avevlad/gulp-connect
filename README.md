@@ -4,7 +4,7 @@
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/gulp-mocha)
+Install with [npm](https://npmjs.org/)
 
 ```
 npm install --save-dev gulp-connect
