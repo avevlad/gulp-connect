@@ -27,4 +27,4 @@ gulp.task('watch', function () {
   ], connect.reload);
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('default', ['connect', 'stylus', 'watch']);

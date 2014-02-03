@@ -1,2 +1,2 @@
-var body = document.getElementById('test');
-body.innerHTML = 'js inner';
+var test = document.getElementById('test');
+test.innerHTML = 'js inner';
