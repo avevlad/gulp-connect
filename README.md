@@ -1,6 +1,6 @@
 # [gulp](https://github.com/wearefractal/gulp)-connect
 
-> Gulp plugin connect to server and opening browser
+> Gulp plugin connect to server, LiveReload and opening browser
 
 ## Install
 
@@ -13,47 +13,89 @@ npm install --save-dev gulp-connect
 
 ## Example
 
-####js
+### connect + livereload + open + stylus
 ```js
-var connect = require('gulp-connect');
+var
+  gulp = require('gulp'),
+  connect = require('gulp-connect'),
+  stylus = require('gulp-stylus');
 
-gulp.task('connect', connect({
+gulp.task('connect', connect.server({
   root: __dirname + '/app',
-  port: 3000
-}));
-
-gulp.task('default', ['connect']);
-```
-
-**or**
-
-```js
-var connect = require('gulp-connect');
-
-gulp.task('connect', connect({
-  root: __dirname + '/app',
-  port: 3000,
+  port: 1337,
+  livereload: true,
   open: {
-    file: 'index.html',
     browser: 'chrome' // if not working OS X browser: 'Google Chrome'
   }
 }));
 
-gulp.task('default', ['connect']);
+gulp.task('stylus', function () {
+  gulp.src('./app/stylus/*.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./app/css'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
+  gulp.watch([
+    './app/*.html',
+    './app/css/*.css',
+    './app/js/*.js'
+  ], connect.reload);
+});
+
+gulp.task('default', ['connect', 'stylus', 'watch']);
+```
+
+**all option**
+
+```js
+gulp.task('connect', connect.server({
+  root: __dirname + '/app',
+  port: 1337,
+  livereload:{
+    port: 35729
+  },
+  open: {
+    file: 'index.html',
+    browser: 'firefox'
+  }
+}));
 ```
 
 
-####coffee
+###coffee
+
+    gulp --require coffee-script
+    
 ```coffee
+gulp = require('gulp')
 connect = require('gulp-connect')
-gulp.task 'connect', connect(
+stylus = require('gulp-stylus')
+
+gulp.task 'connect', connect.server(
   root: __dirname + '/app'
-  port: 3000
+  port: 1337
+  livereload: true
   open:
-    file: 'index.html'
     browser: 'chrome'
 )
-gulp.task 'default', ['connect']
+
+gulp.task 'stylus', ->
+  gulp
+    .src('./app/stylus/*.styl')
+    .pipe(stylus())
+    .pipe gulp.dest('./app/css')
+
+gulp.task 'watch', ->
+  gulp.watch ['./app/stylus/*.styl'], ['stylus']
+  gulp.watch [
+    './app/*.html'
+    './app/css/*.css'
+    './app/js/*.js'
+  ], connect.reload
+
+gulp.task 'default', ['connect', 'stylus', 'watch']
 ```
 
 
@@ -72,6 +114,17 @@ Type: `Number`
 Default: `3000`
 
 The connect port
+
+#### options.livereload
+
+Type: `Object or Boolean`  
+Default: `false`
+
+#### options.livereload.port
+
+Type: `Number`  
+Default: `35729`
+
 
 #### options.open
 
