@@ -1,4 +1,4 @@
-var fs = require('fs');
+var file = require('file-utils');
 var util = require('gulp-util');
 var http = require('http');
 var open = require('open');
@@ -14,7 +14,7 @@ module.exports = function (opt) {
     if (!opt.open.browser) opt.open.browser = 'chrome';
   }
 
-  if (!fs.existsSync(opt.root)) {
+  if (!file.isDir(opt.root)) {
     util.log(util.colors.red('Folder ' + opt.root + ' does not exist!'));
     return false;
   }
@@ -22,6 +22,12 @@ module.exports = function (opt) {
   return function () {
     var app = connect();
     app.use(connect.static(opt.root));
+
+    if (opt.rewrite) {
+      app.use(function (req, res) {
+        res.end(file.read(opt.root + "/" + opt.rewrite));
+      });
+    }
 
     http.createServer(app).listen(opt.port, function () {
       util.log(util.colors.green('Server started on ' + opt.port + ' port'));
