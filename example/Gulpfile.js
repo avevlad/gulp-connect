@@ -1,6 +1,7 @@
-var gulp = require('gulp');
-var connect = require('../index');
-var stylus = require('gulp-stylus');
+var
+  gulp = require('gulp'),
+  connect = require('../index'),
+  stylus = require('gulp-stylus');
 
 gulp.task('connect', connect.server({
   root: __dirname + '/app',
