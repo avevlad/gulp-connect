@@ -59,6 +59,11 @@ gulp.task('connect', connect.server({
   open: {
     file: 'index.html',
     browser: 'firefox'
+  },
+  middleware: function(connect, o) {
+    return [
+      // ...
+    ]
   }
 }));
 ```
