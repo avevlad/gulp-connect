@@ -66,7 +66,7 @@ gulp.task('connect', connect.server({
 
 ###coffee
 
-    gulp --require coffee-script
+    gulp --require coffee-script/register
     
 ```coffee
 gulp = require('gulp')
