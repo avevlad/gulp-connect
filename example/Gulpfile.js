@@ -1,7 +1,8 @@
 var
   gulp = require('gulp'),
-  connect = require('../index'),
-  stylus = require('gulp-stylus');
+  watch = require('gulp-watch'),
+  stylus = require('gulp-stylus'),
+  connect = require('../index');
 
 gulp.task('connect', connect.server({
   root: __dirname + '/app',
@@ -12,19 +13,18 @@ gulp.task('connect', connect.server({
   }
 }));
 
+gulp.task('html', function () {
+  gulp.src('./app/*.html')
+    .pipe(watch())
+    .pipe(connect.reload());
+});
+
 gulp.task('stylus', function () {
   gulp.src('./app/stylus/*.styl')
+    .pipe(watch())
     .pipe(stylus())
-    .pipe(gulp.dest('./app/css'));
+    .pipe(gulp.dest('./app/css'))
+    .pipe(connect.reload());
 });
 
-gulp.task('watch', function () {
-  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
-  gulp.watch([
-    './app/*.html',
-    './app/css/*.css',
-    './app/js/*.js'
-  ], connect.reload);
-});
-
-gulp.task('default', ['connect', 'stylus', 'watch']);
+gulp.task('default', ['connect', 'html', 'stylus']);
