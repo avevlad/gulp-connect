@@ -17,8 +17,9 @@ npm install --save-dev gulp-connect
 ```js
 var
   gulp = require('gulp'),
-  connect = require('gulp-connect'),
-  stylus = require('gulp-stylus');
+  watch = require('gulp-watch'),
+  stylus = require('gulp-stylus'),
+  connect = require('gulp-connect');
 
 gulp.task('connect', connect.server({
   root: __dirname + '/app',
@@ -29,22 +30,21 @@ gulp.task('connect', connect.server({
   }
 }));
 
+gulp.task('html', function () {
+  gulp.src('./app/*.html')
+    .pipe(watch())
+    .pipe(connect.reload());
+});
+
 gulp.task('stylus', function () {
   gulp.src('./app/stylus/*.styl')
+    .pipe(watch())
     .pipe(stylus())
-    .pipe(gulp.dest('./app/css'));
+    .pipe(gulp.dest('./app/css'))
+    .pipe(connect.reload());
 });
 
-gulp.task('watch', function () {
-  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
-  gulp.watch([
-    './app/*.html',
-    './app/css/*.css',
-    './app/js/*.js'
-  ], connect.reload);
-});
-
-gulp.task('default', ['connect', 'stylus', 'watch']);
+gulp.task('default', ['connect', 'html', 'stylus']);
 ```
 
 **all option**
@@ -69,33 +69,38 @@ gulp.task('connect', connect.server({
     gulp --require coffee-script/register
     
 ```coffee
-gulp = require('gulp')
-connect = require('gulp-connect')
-stylus = require('gulp-stylus')
+gulp = require("gulp")
+watch = require("gulp-watch")
+stylus = require("gulp-stylus")
+connect = require("gulp-connect")
 
-gulp.task 'connect', connect.server(
-  root: __dirname + '/app'
+gulp.task "connect", connect.server(
+  root: __dirname + "/app"
   port: 1337
   livereload: true
   open:
-    browser: 'chrome'
+    browser: "chrome"
 )
 
-gulp.task 'stylus', ->
+gulp.task "html", ->
   gulp
-    .src('./app/stylus/*.styl')
+    .src("./app/*.html")
+    .pipe(watch())
+    .pipe(connect.reload())
+
+gulp.task "stylus", ->
+  gulp
+    .src("./app/stylus/*.styl")
+    .pipe(watch())
     .pipe(stylus())
-    .pipe gulp.dest('./app/css')
+    .pipe(gulp.dest("./app/css"))
+    .pipe(connect.reload())
 
-gulp.task 'watch', ->
-  gulp.watch ['./app/stylus/*.styl'], ['stylus']
-  gulp.watch [
-    './app/*.html'
-    './app/css/*.css'
-    './app/js/*.js'
-  ], connect.reload
-
-gulp.task 'default', ['connect', 'stylus', 'watch']
+gulp.task "default", [
+  "connect"
+  "html"
+  "stylus"
+]
 ```
 
 
