@@ -1,3 +1,4 @@
+var es = require('event-stream');
 var fs = require('fs');
 var util = require('gulp-util');
 var http = require('http');
@@ -48,11 +49,14 @@ module.exports = {
         })
     };
   },
-  reload: function (event) {
-    lr.changed({
-      body: {
-        files: event.path
-      }
+  reload: function () {
+    return es.map(function (file, callback) {
+      lr.changed({
+        body: {
+          files: file.path
+        }
+      });
+      callback(null, file);
     });
   }
 };
