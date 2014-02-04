@@ -27,9 +27,8 @@ module.exports = {
       util.log(util.colors.red('Folder ' + o.root + ' does not exist!'));
       return false;
     }
-
     return function () {
-      var middleware = [];
+      var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
       if (o.livereload) {
         lr = tiny_lr();
         lr.listen(o.livereload.port);
@@ -40,7 +39,8 @@ module.exports = {
       var app = connect.apply(null, middleware);
       var server = http.createServer(app);
       server
-        .listen(o.port, function () {
+        .listen(o.port)
+        .on('listening', function() {
           util.log(util.colors.green('Server started on ' + o.port + ' port'));
           if (o.open) {
             open('http://localhost:' + o.port + '/' + o.open.file, o.open.browser);
