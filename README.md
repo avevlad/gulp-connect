@@ -17,7 +17,6 @@ npm install --save-dev gulp-connect
 ```js
 var
   gulp = require('gulp'),
-  watch = require('gulp-watch'),
   stylus = require('gulp-stylus'),
   connect = require('gulp-connect');
 
@@ -32,19 +31,22 @@ gulp.task('connect', connect.server({
 
 gulp.task('html', function () {
   gulp.src('./app/*.html')
-    .pipe(watch())
     .pipe(connect.reload());
 });
 
 gulp.task('stylus', function () {
   gulp.src('./app/stylus/*.styl')
-    .pipe(watch())
     .pipe(stylus())
     .pipe(gulp.dest('./app/css'))
     .pipe(connect.reload());
 });
 
-gulp.task('default', ['connect', 'html', 'stylus']);
+gulp.task('watch', function () {
+  gulp.watch(['./app/*.html'], ['html']);
+  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
+});
+
+gulp.task('default', ['connect', 'stylus', 'watch']);
 ```
 
 **all option**
@@ -75,7 +77,6 @@ gulp.task('connect', connect.server({
     
 ```coffee
 gulp = require("gulp")
-watch = require("gulp-watch")
 stylus = require("gulp-stylus")
 connect = require("gulp-connect")
 
@@ -84,27 +85,28 @@ gulp.task "connect", connect.server(
   port: 1337
   livereload: true
   open:
-    browser: "chrome"
+    browser: "chrome" # if not working OS X browser: 'Google Chrome'
 )
 
 gulp.task "html", ->
-  gulp
-    .src("./app/*.html")
-    .pipe(watch())
-    .pipe(connect.reload())
+  gulp.src("./app/*.html").pipe connect.reload()
 
 gulp.task "stylus", ->
-  gulp
-    .src("./app/stylus/*.styl")
-    .pipe(watch())
+  gulp.src("./app/stylus/*.styl")
     .pipe(stylus())
     .pipe(gulp.dest("./app/css"))
-    .pipe(connect.reload())
+    .pipe connect.reload()
+
+gulp.task "watch", ->
+  gulp
+    .watch ["./app/*.html"], ["html"]
+  gulp
+    .watch ["./app/stylus/*.styl"], ["stylus"]
 
 gulp.task "default", [
   "connect"
-  "html"
   "stylus"
+  "watch"
 ]
 ```
 
