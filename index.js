@@ -16,8 +16,8 @@ module.exports = {
     if (!o.livereload) o.livereload = false;
     if (o.open) {
       if (typeof o.open == 'boolean') o.open = {};
-      if (!o.open.file) o.open.file = 'index.html';
-      if (!o.open.browser) o.open.browser = 'chrome';
+      if (!o.open.file) o.open.file = '';
+      if (!o.open.browser) o.open.browser = undefined;
     }
     if (o.livereload) {
       if (typeof o.livereload == 'boolean') o.livereload = {};
@@ -41,10 +41,19 @@ module.exports = {
       server
         .listen(o.port)
         .on('listening', function() {
+          var url, browsername;
+
           util.log(util.colors.green('Server started on ' + o.port + ' port'));
           if (o.open) {
-            open('http://localhost:' + o.port + '/' + o.open.file, o.open.browser);
-            util.log(util.colors.green('Opened ' + o.open.file + ' in ' + o.open.browser));
+            url = 'http://localhost:' + o.port + '/' + o.open.file;
+
+            if (o.open.browser) browsername = o.open.browser;
+            else browsername = 'default browser';
+
+            open(url, o.open.browser, function(error) {
+              if (error) util.log(util.colors.red(error));
+              else util.log(util.colors.green('Opened ' + url + ' in ' + browsername));
+            });
           }
         })
     };
