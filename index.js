@@ -43,8 +43,10 @@ module.exports = {
         .on('listening', function() {
           util.log(util.colors.green('Server started on ' + o.port + ' port'));
           if (o.open) {
-            open('http://localhost:' + o.port + '/' + o.open.file, o.open.browser);
-            util.log(util.colors.green('Opened ' + o.open.file + ' in ' + o.open.browser));
+            open('http://localhost:' + o.port + '/' + o.open.file, o.open.browser, function(error) {
+              if (error) util.log(util.colors.red(error));
+              else util.log(util.colors.green('Opened ' + o.open.file + ' in ' + o.open.browser));
+            });
           }
         })
     };
