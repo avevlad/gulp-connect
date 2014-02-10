@@ -1,4 +1,7 @@
-# [gulp](https://github.com/wearefractal/gulp)-connect
+# [gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect) 
+
+[![NPM](https://nodei.co/npm/gulp-connect.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-connect/)
+
 
 > Gulp plugin connect to server, LiveReload and opening browser
 
