@@ -7,10 +7,12 @@ var connect = require('connect');
 var liveReload = require('connect-livereload');
 var tiny_lr = require('tiny-lr');
 var lr;
+var opt;
 
 module.exports = {
   server: function (o) {
     o = o || {};
+    opt = o;
     if (!o.root) o.root = ['app'];
     if (!o.port) o.port = 3000;
     if (!o.livereload) o.livereload = false;
@@ -68,11 +70,13 @@ module.exports = {
   },
   reload: function () {
     return es.map(function (file, callback) {
-      lr.changed({
-        body: {
-          files: file.path
-        }
-      });
+      if (opt.livereload) {
+        lr.changed({
+          body: {
+            files: file.path
+          }
+        });
+      }
       callback(null, file);
     });
   }
