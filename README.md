@@ -118,7 +118,7 @@ gulp.task "default", [
 
 #### options.root
 
-Type: `Array`
+Type: `Array`  
 Default: `['app']`
 
 The root path
