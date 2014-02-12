@@ -24,7 +24,7 @@ var
   connect = require('gulp-connect');
 
 gulp.task('connect', connect.server({
-  root: __dirname + '/app',
+  root: ['app'],
   port: 1337,
   livereload: true,
   open: {
@@ -56,7 +56,7 @@ gulp.task('default', ['connect', 'stylus', 'watch']);
 
 ```js
 gulp.task('connect', connect.server({
-  root: __dirname + '/app',
+  root: ['app', 'some_path'],
   port: 1337,
   livereload:{
     port: 35729
@@ -84,7 +84,7 @@ stylus = require("gulp-stylus")
 connect = require("gulp-connect")
 
 gulp.task "connect", connect.server(
-  root: __dirname + "/app"
+  root: ['app']
   port: 1337
   livereload: true
   open:
@@ -118,8 +118,8 @@ gulp.task "default", [
 
 #### options.root
 
-Type: `String`  
-Default: `app`
+Type: `Array`
+Default: `['app']`
 
 The root path
 
