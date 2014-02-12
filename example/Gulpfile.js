@@ -4,7 +4,7 @@ var
   connect = require('../index');
 
 gulp.task('connect', connect.server({
-  root: __dirname + '/app',
+  root: ['app', 'path'],
   port: 1337,
   livereload: true,
   open: {
