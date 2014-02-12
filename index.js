@@ -40,13 +40,13 @@ module.exports = {
     }
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
-      o.root.forEach(function (path) {
-        middleware.push(connect.static(path));
-      });
       if (o.livereload) {
         middleware.push(liveReload({port: o.livereload.port}));
         util.log(util.colors.green('Connect LiveReload on ' + o.livereload.port + ' port'));
       }
+      o.root.forEach(function (path) {
+        middleware.push(connect.static(path));
+      });
       var app = connect.apply(null, middleware);
       var server = http.createServer(app);
       server
