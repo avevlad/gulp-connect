@@ -27,19 +27,6 @@ module.exports = {
       lr = tiny_lr();
       lr.listen(o.livereload.port);
     }
-    var BreakException = function (message) {
-      this.message = message;
-    };
-    try {
-      o.root.forEach(function (path) {
-        if (!fs.existsSync(path)) {
-          throw new BreakException('Folder ' + path + ' does not exist!');
-        }
-      });
-    } catch (e) {
-      util.log(util.colors.red(e.message));
-      return false;
-    }
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
       if (o.livereload) {
