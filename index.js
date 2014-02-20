@@ -23,8 +23,6 @@ module.exports = {
     if (o.livereload) {
       if (typeof o.livereload == 'boolean') o.livereload = {};
       if (!o.livereload.port) o.livereload.port = 35729;
-      lr = tiny_lr();
-      lr.listen(o.livereload.port);
     }
     opt = o;
     return function () {
@@ -41,6 +39,8 @@ module.exports = {
       server
         .listen(o.port)
         .on('listening', function () {
+          lr = tiny_lr();
+          lr.listen(o.livereload.port);
           var url, browsername;
           util.log(util.colors.green('Server started on ' + o.port + ' port'));
           if (o.open) {
