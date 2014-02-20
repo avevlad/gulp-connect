@@ -52,12 +52,13 @@ module.exports = {
               else util.log(util.colors.green('Opened ' + url + ' in ' + browsername));
             });
           }
-        })
+        });
     };
   },
   reload: function () {
     return es.map(function (file, callback) {
-      if (opt.livereload) {
+      var o = opt || {};
+      if (o.livereload) {
         lr.changed({
           body: {
             files: file.path
