@@ -12,7 +12,6 @@ var opt;
 module.exports = {
   server: function (o) {
     o = o || {};
-    opt = o;
     if (!o.root) o.root = ['app'];
     if (!o.port) o.port = 3000;
     if (!o.livereload) o.livereload = false;
@@ -27,6 +26,7 @@ module.exports = {
       lr = tiny_lr();
       lr.listen(o.livereload.port);
     }
+    opt = o;
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
       if (o.livereload) {
