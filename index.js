@@ -37,6 +37,7 @@ module.exports = {
       });
       var app = connect.apply(null, middleware);
       var server = http.createServer(app);
+      if (o.root.length) app.use(connect.directory(o.root[0]));
       server
         .listen(o.port)
         .on('listening', function () {
