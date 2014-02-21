@@ -20,12 +20,6 @@ module.exports = {
       if (!o.open.file) o.open.file = '';
       if (!o.open.browser) o.open.browser = undefined;
     }
-    if (o.livereload) {
-      if (typeof o.livereload == 'boolean') o.livereload = {};
-      if (!o.livereload.port) o.livereload.port = 35729;
-      lr = tiny_lr();
-      lr.listen(o.livereload.port);
-    }
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
       if (o.livereload) {
@@ -41,6 +35,12 @@ module.exports = {
       server
         .listen(o.port)
         .on('listening', function () {
+          if (o.livereload) {
+            if (typeof o.livereload == 'boolean') o.livereload = {};
+            if (!o.livereload.port) o.livereload.port = 35729;
+            lr = tiny_lr();
+            lr.listen(o.livereload.port);
+          }
           var url, browsername;
           util.log(util.colors.green('Server started on ' + o.port + ' port'));
           if (o.open) {
