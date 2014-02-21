@@ -58,11 +58,13 @@ module.exports = {
   reload: function () {
     return es.map(function (file, callback) {
       if (o.livereload) {
-        lr.changed({
-          body: {
-            files: file.path
-          }
-        });
+        if (lr) {
+          lr.changed({
+            body: {
+              files: file.path
+            }
+          });
+        }
       } else {
         util.log(util.colors.bgRed('call connect.reload(), livereload is false, enable livereload'));
       }
