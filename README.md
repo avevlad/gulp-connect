@@ -16,6 +16,17 @@ npm install --save-dev gulp-connect
 
 ## Example
 
+## simplest
+```js
+var gulp = require('gulp'),
+  connect = require('gulp-connect');
+
+gulp.task('connect', connect.server());
+
+gulp.task('default', ['connect']);
+```
+
+
 ### connect + livereload + open + stylus
 ```js
 var
@@ -155,7 +166,7 @@ The open file
 
 #### options.open.browser
 
-Type: `String`
+Type: `String`  
 Default: the system default browser
 
 The type of browser, like `chrome`
