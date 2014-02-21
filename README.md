@@ -133,7 +133,7 @@ The connect port
 #### options.livereload
 
 Type: `Object or Boolean`  
-Default: `false`
+Default: `true`
 
 #### options.livereload.port
 
@@ -155,10 +155,10 @@ The open file
 
 #### options.open.browser
 
-Type: `String`  
-Default: `chrome`
+Type: `String`
+Default: the system default browser
 
-The type of browser
+The type of browser, like `chrome`
 
 
 ## License
