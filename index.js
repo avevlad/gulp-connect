@@ -7,11 +7,11 @@ var connect = require('connect');
 var liveReload = require('connect-livereload');
 var tiny_lr = require('tiny-lr');
 var lr;
-var opt;
+var o = {};
 
 module.exports = {
-  server: function (o) {
-    o = o || {};
+  server: function (opt) {
+    o = opt || {};
     if (!o.root) o.root = ['app'];
     if (!o.port) o.port = 3000;
     if (!o.livereload) o.livereload = false;
@@ -26,7 +26,6 @@ module.exports = {
       lr = tiny_lr();
       lr.listen(o.livereload.port);
     }
-    opt = o;
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
       if (o.livereload) {
@@ -57,12 +56,14 @@ module.exports = {
   },
   reload: function () {
     return es.map(function (file, callback) {
-      if (opt.livereload) {
+      if (o.livereload) {
         lr.changed({
           body: {
             files: file.path
           }
         });
+      } else {
+        util.log(util.colors.bgRed('call connect.reload(), livereload is false, enable livereload'));
       }
       callback(null, file);
     });
