@@ -1,2 +1,5 @@
 .idea
+.DS_Store
+.swo
+.swp
 node_modules
