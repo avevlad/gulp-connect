@@ -57,7 +57,7 @@ module.exports = {
   },
   reload: function () {
     return es.map(function (file, callback) {
-      if (o.livereload) {
+      if (o.livereload && typeof lr == "object") {
         lr.changed({
           body: {
             files: file.path
