@@ -14,7 +14,12 @@ module.exports = {
     o = opt || {};
     if (!o.root) o.root = ['app'];
     if (!o.port) o.port = 3000;
-    if (!o.livereload) o.livereload = false;
+    if (!o.livereload) {
+      o.livereload = false;
+    } else {
+      if (typeof o.livereload == 'boolean') o.livereload = {};
+      if (!o.livereload.port) o.livereload.port = 35729;
+    }
     if (o.open) {
       if (typeof o.open == 'boolean') o.open = {};
       if (!o.open.file) o.open.file = '';
@@ -36,8 +41,6 @@ module.exports = {
         .listen(o.port)
         .on('listening', function () {
           if (o.livereload) {
-            if (typeof o.livereload == 'boolean') o.livereload = {};
-            if (!o.livereload.port) o.livereload.port = 35729;
             lr = tiny_lr();
             lr.listen(o.livereload.port);
           }
