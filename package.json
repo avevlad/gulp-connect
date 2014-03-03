@@ -7,15 +7,15 @@
     "type": "git",
     "url": "git://github.com/avevlad/gulp-connect"
   },
-  "author": {
-    "name": "Vladislav Derjavin",
-    "email": "dev@vld.me",
-    "url": "http://vld.me/"
-  },
-  "contributors": [
+  "authors": [
     {
-      "name": "Gusakov Nikita",
-      "email": "dev@nkt.me"
+      "name": "Vladislav Derjavin",
+      "email": "dev@vld.me",
+      "url": "http://vld.me/"
+    },
+    {
+      "name": "Contributors",
+      "homepage": "https://github.com/AveVlad/gulp-connect/graphs/contributors"
     }
   ],
   "engines": {
