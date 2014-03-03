@@ -2,10 +2,8 @@ language: node_js
 node_js:
   - "0.11"
 
-before_script:
-  - npm install
-  - cd example/all-features
-  - ls
+before_install:
+  - npm install -g gulp
 
 script:
   - gulp
