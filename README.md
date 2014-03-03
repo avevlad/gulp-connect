@@ -16,6 +16,17 @@ npm install --save-dev gulp-connect
 
 ## Example
 
+## simplest
+```js
+var gulp = require('gulp'),
+  connect = require('gulp-connect');
+
+gulp.task('connect', connect.server());
+
+gulp.task('default', ['connect']);
+```
+
+
 ### connect + livereload + open + stylus
 ```js
 var
@@ -133,7 +144,7 @@ The connect port
 #### options.livereload
 
 Type: `Object or Boolean`  
-Default: `false`
+Default: `true`
 
 #### options.livereload.port
 
@@ -156,9 +167,9 @@ The open file
 #### options.open.browser
 
 Type: `String`  
-Default: `chrome`
+Default: the system default browser
 
-The type of browser
+The type of browser, like `chrome`
 
 
 ## License

@@ -11,23 +11,19 @@ var o = {};
 
 module.exports = {
   server: function (opt) {
-    o = opt || {};
-    if (!o.root) o.root = ['app'];
-    if (!o.port) o.port = 3000;
-    if (!o.livereload) {
-      o.livereload = false;
-    } else {
-      if (typeof o.livereload == 'boolean') o.livereload = {};
-      if (!o.livereload.port) o.livereload.port = 35729;
-    }
-    if (o.open) {
-      if (typeof o.open == 'boolean') o.open = {};
-      if (!o.open.file) o.open.file = '';
-      if (!o.open.browser) o.open.browser = undefined;
-    }
+    o = opt || {};    
+    o.root = o.root || ['app'];
+    o.port = o.port || 3000;
+    o.livereload = typeof o.livereload === 'boolean' ? o.livereload : (o.livereload || true);
+    o.open = o.open || {};
+    if (!o.open.file) o.open.file = '';
+    if (!o.open.browser) o.open.browser = undefined;
+
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
       if (o.livereload) {
+        if (typeof o.livereload == 'boolean') o.livereload = {};
+        if (!o.livereload.port) o.livereload.port = 35729;
         middleware.push(liveReload({port: o.livereload.port}));
         util.log(util.colors.green('Connect LiveReload on ' + o.livereload.port + ' port'));
       }
