@@ -6,10 +6,7 @@ var
 gulp.task('connect', connect.server({
   root: ['app', 'path'],
   port: 1337,
-  livereload: true,
-  open: {
-    browser: 'chrome'
-  }
+  livereload: true
 }));
 
 gulp.task('html', function () {
