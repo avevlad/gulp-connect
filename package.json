@@ -12,6 +12,12 @@
     "email": "dev@vld.me",
     "url": "http://vld.me/"
   },
+  "contributors": [
+    {
+      "name": "Gusakov Nikita",
+      "email": "dev@nkt.me"
+    }
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
