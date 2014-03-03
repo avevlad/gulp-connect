@@ -7,7 +7,7 @@
 
 ## Install
 
-Install with [npm](https://npmjs.org/)
+Install with [npm](https://npmjs.org/).
 
 ```
 npm install --save-dev gulp-connect
