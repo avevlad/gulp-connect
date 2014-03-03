@@ -4,6 +4,7 @@ node_js:
 
 before_install:
   - npm install -g gulp
+  - cd example/all-features
 
 script:
   - gulp
