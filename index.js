@@ -15,9 +15,10 @@ module.exports = {
     o.root = o.root || ['app'];
     o.port = o.port || 3000;
     o.livereload = typeof o.livereload === 'boolean' ? o.livereload : (o.livereload || true);
-    o.open = o.open || {};
-    if (!o.open.file) o.open.file = '';
-    if (!o.open.browser) o.open.browser = undefined;
+    if (o.open) {
+      if (!o.open.file) o.open.file = '';
+      if (!o.open.browser) o.open.browser = undefined;
+    }
 
     return function () {
       var middleware = o.middleware ? o.middleware.call(this, connect, o) : [];
