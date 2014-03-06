@@ -19,7 +19,7 @@ npm install --save-dev gulp-connect
 ## simplest
 ```js
 var gulp = require('gulp'),
-  connect = require('gulp-connect');
+  connect = require('gulp-connect')();
 
 gulp.task('connect', connect.server());
 
@@ -32,7 +32,7 @@ gulp.task('default', ['connect']);
 var
   gulp = require('gulp'),
   stylus = require('gulp-stylus'),
-  connect = require('gulp-connect');
+  connect = require('gulp-connect')();
 
 gulp.task('connect', connect.server({
   root: ['app'],
@@ -84,15 +84,63 @@ gulp.task('connect', connect.server({
 }));
 ```
 
+### multiple connects + livereload + open + stylus
+```js
+var
+  gulp = require('gulp'),
+  stylus = require('gulp-stylus'),
+  connect = require('gulp-connect');
+
+var devServer = connect(),
+    coverageServer = connect();
+
+gulp.task('connect', devServer.server({
+  root: ['app'],
+  port: 1337,
+  livereload: true,
+  open: {
+    browser: 'chrome' // if not working OS X browser: 'Google Chrome'
+  }
+}));
+
+gulp.task('coverage', coverageServer.server({
+  root: ['coverage'],
+  port: 1338,
+  livereload: false,
+  open: {
+    browser: 'chrome' // if not working OS X browser: 'Google Chrome'
+  }
+}));
+
+gulp.task('html', function () {
+  gulp.src('./app/*.html')
+    .pipe(devServer.reload());
+});
+
+gulp.task('stylus', function () {
+  gulp.src('./app/stylus/*.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./app/css'))
+    .pipe(devServer.reload());
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['./app/*.html'], ['html']);
+  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
+});
+
+gulp.task('default', ['connect', 'stylus', 'watch']);
+```
+
 
 ###coffee
 
     gulp --require coffee-script/register
-    
+
 ```coffee
 gulp = require("gulp")
 stylus = require("gulp-stylus")
-connect = require("gulp-connect")
+connect = require("gulp-connect")()
 
 gulp.task "connect", connect.server(
   root: ['app']
@@ -129,7 +177,7 @@ gulp.task "default", [
 
 #### options.root
 
-Type: `Array`          
+Type: `Array`
 Default: `['app']`
 
 The root path
