@@ -13,6 +13,7 @@ module.exports = {
   server: function (opt) {
     o = opt || {};
     o.root = o.root || ['app'];
+    o.host = o.host || 'localhost';
     o.port = o.port || 3000;
     o.livereload = typeof o.livereload === 'boolean' ? o.livereload : (o.livereload || true);
     if (o.open) {
@@ -45,7 +46,10 @@ module.exports = {
           var url, browsername;
           util.log(util.colors.green('Server started on ' + o.port + ' port'));
           if (o.open) {
-            url = 'http://localhost:' + o.port + '/' + o.open.file;
+            url = 'http://' + o.host + (o.port === 80 ? '' : ':' + o.port) + '/';
+            if (o.open.file) {
+              url += o.open.file;
+            }
             if (o.open.browser) browsername = o.open.browser;
             else browsername = 'default browser';
             open(url, o.open.browser, function (error) {

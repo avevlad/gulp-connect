@@ -68,6 +68,7 @@ gulp.task('default', ['connect', 'stylus', 'watch']);
 ```js
 gulp.task('connect', connect.server({
   root: ['app', 'some_path'],
+  host: 'localhost',
   port: 1337,
   livereload:{
     port: 35729
