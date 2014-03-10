@@ -1,11 +1,11 @@
 {
-  "name": "gulp-connect",
+  "name": "gulp-connect-multi",
   "version": "1.0.7",
-  "description": "Gulp plugin connect to server, LiveReload and opening browser",
+  "description": "A fork of gulp-connect with multiple servers support",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/avevlad/gulp-connect"
+    "url": "git://github.com/torifat/gulp-connect"
   },
   "authors": [
     {
@@ -14,8 +14,13 @@
       "url": "http://vld.me/"
     },
     {
+      "name": "Rifat Nabi",
+      "email": "to.rifat@gmail.com",
+      "url": "http://rifatnabi.com/"
+    },
+    {
       "name": "Contributors",
-      "homepage": "https://github.com/AveVlad/gulp-connect/graphs/contributors"
+      "homepage": "https://github.com/torifat/gulp-connect/graphs/contributors"
     }
   ],
   "engines": {

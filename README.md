@@ -1,8 +1,8 @@
-# [gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect) [![Dependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect) [![devDependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect#info=devDependencies)
+# [gulp](https://github.com/wearefractal/gulp)-connect-multi [![NPM version](https://badge.fury.io/js/gulp-connect-multi.png)](http://badge.fury.io/js/gulp-connect-multi) [![Dependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect) [![devDependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect#info=devDependencies)
 
-[![NPM](https://nodei.co/npm/gulp-connect.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-connect/)
+[![NPM](https://nodei.co/npm/gulp-connect-multi.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-connect-multi/)
 
-
+> A fork of [gulp-connect](https://github.com/AveVlad/gulp-connect) with multiple servers support
 > Gulp plugin connect to server, LiveReload and opening browser
 
 ## Install
@@ -10,7 +10,7 @@
 Install with [npm](https://npmjs.org/).
 
 ```
-npm install --save-dev gulp-connect
+npm install --save-dev gulp-connect-multi
 ```
 
 
@@ -19,7 +19,7 @@ npm install --save-dev gulp-connect
 ## simplest
 ```js
 var gulp = require('gulp'),
-  connect = require('gulp-connect')();
+  connect = require('gulp-connect-multi')();
 
 gulp.task('connect', connect.server());
 
@@ -32,7 +32,7 @@ gulp.task('default', ['connect']);
 var
   gulp = require('gulp'),
   stylus = require('gulp-stylus'),
-  connect = require('gulp-connect')();
+  connect = require('gulp-connect-multi')();
 
 gulp.task('connect', connect.server({
   root: ['app'],
@@ -89,7 +89,7 @@ gulp.task('connect', connect.server({
 var
   gulp = require('gulp'),
   stylus = require('gulp-stylus'),
-  connect = require('gulp-connect');
+  connect = require('gulp-connect-multi');
 
 var devServer = connect(),
     coverageServer = connect();
@@ -140,7 +140,7 @@ gulp.task('default', ['connect', 'stylus', 'watch']);
 ```coffee
 gulp = require("gulp")
 stylus = require("gulp-stylus")
-connect = require("gulp-connect")()
+connect = require("gulp-connect-multi")()
 
 gulp.task "connect", connect.server(
   root: ['app']
