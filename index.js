@@ -68,8 +68,6 @@ module.exports = {
             files: file.path
           }
         });
-      } else {
-        util.log(util.colors.bgRed('call connect.reload(), livereload is false, enable livereload'));
       }
       callback(null, file);
     });
