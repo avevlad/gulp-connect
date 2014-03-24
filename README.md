@@ -65,47 +65,6 @@ gulp.task('default', ['connect', 'stylus', 'watch']);
 
 
 
-
-###coffee
-
-    gulp --require coffee-script/register
-    
-```coffee
-gulp = require("gulp")
-stylus = require("gulp-stylus")
-connect = require("gulp-connect")
-
-gulp.task "connect", connect.server(
-  root: ['app']
-  port: 1337
-  livereload: true
-  open:
-    browser: "chrome" # if not working OS X browser: 'Google Chrome'
-)
-
-gulp.task "html", ->
-  gulp.src("./app/*.html").pipe connect.reload()
-
-gulp.task "stylus", ->
-  gulp.src("./app/stylus/*.styl")
-    .pipe(stylus())
-    .pipe(gulp.dest("./app/css"))
-    .pipe connect.reload()
-
-gulp.task "watch", ->
-  gulp
-    .watch ["./app/*.html"], ["html"]
-  gulp
-    .watch ["./app/stylus/*.styl"], ["stylus"]
-
-gulp.task "default", [
-  "connect"
-  "stylus"
-  "watch"
-]
-```
-
-
 ## API
 
 #### options.root
