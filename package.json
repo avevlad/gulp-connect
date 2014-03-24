@@ -1,6 +1,6 @@
 {
   "name": "gulp-connect",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Gulp plugin connect to server, LiveReload and opening browser",
   "license": "MIT",
   "repository": {
@@ -22,14 +22,13 @@
     "node": ">=0.10.0"
   },
   "keywords": [
+    "gulpplugin",
     "gulpfriendly",
     "connect",
     "livereload",
     "open",
-    "server",
-    "url",
-    "chrome",
-    "browser"
+    "webserver",
+    "server"
   ],
   "dependencies": {
     "gulp-util": "~2.2.14",
@@ -37,7 +36,7 @@
     "connect-livereload": "~0.3.2",
     "open": "0.0.4",
     "tiny-lr": "0.0.5",
-    "connect": "~2.13.0"
+    "connect": "~2.14.3"
   },
   "devDependencies": {
     "gulp": "~3.5.1",

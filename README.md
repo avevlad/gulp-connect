@@ -8,8 +8,6 @@
 
 ## Install
 
-Install with [npm](https://npmjs.org/).
-
 ```
 npm install --save-dev gulp-connect
 ```
@@ -38,7 +36,7 @@ gulp.task('connect', connect.server({
   port: 1337,
   livereload: true,
   open: {
-    browser: 'chrome' // 
+    browser: 'chrome' //
   }
 }));
 
@@ -59,38 +57,38 @@ gulp.task('default', ['connect', 'watch']);
 
 #### options.root
 
-Type: `Array`          
+Type: `Array`
 Default: `['app']`
 
 The root path
 
 #### options.port
 
-Type: `Number`  
+Type: `Number`
 Default: `3000`
 
 The connect webserver port
 
 #### options.livereload
 
-Type: `Object or Boolean`  
+Type: `Object or Boolean`
 Default: `true`
 
 #### options.livereload.port
 
-Type: `Number`  
+Type: `Number`
 Default: `35729`
 
 #### options.open.file
 
-Type: `String`  
+Type: `String`
 Default: `index.html`
 
 The file to open in the browser
 
 #### options.open.browser
 
-Type: `String`  
+Type: `String`
 Default: the system default browser
 
 The name of the browser (Example: `chrome`, on OSX: `Google Chrome`)
