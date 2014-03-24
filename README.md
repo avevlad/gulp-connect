@@ -1,4 +1,5 @@
-# [gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect) [![Dependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect) [![devDependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect#info=devDependencies)
+[gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect) [![Dependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect) [![devDependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect#info=devDependencies)
+==================
 
 [![NPM](https://nodei.co/npm/gulp-connect.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-connect/)
 
@@ -14,9 +15,8 @@ npm install --save-dev gulp-connect
 ```
 
 
-## Example
+## Usage
 
-## simplest
 ```js
 var gulp = require('gulp'),
   connect = require('gulp-connect');
@@ -27,7 +27,7 @@ gulp.task('default', ['connect']);
 ```
 
 
-### connect + livereload + open + stylus
+#### Livereload
 ```js
 var
   gulp = require('gulp'),
@@ -63,27 +63,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['connect', 'stylus', 'watch']);
 ```
 
-**all option**
 
-```js
-gulp.task('connect', connect.server({
-  root: ['app', 'some_path'],
-  host: 'localhost',
-  port: 1337,
-  livereload:{
-    port: 35729
-  },
-  open: {
-    file: 'index.html',
-    browser: 'firefox'
-  },
-  middleware: function(connect, o) {
-    return [
-      // ...
-    ]
-  }
-}));
-```
 
 
 ###coffee
