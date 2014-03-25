@@ -2,7 +2,7 @@
 ==================
 
 
-> Gulp plugin connect to server, LiveReload and opening browser
+> Gulp plugin to run to run a webserver (with LiveReload)
 
 ## Install
 
@@ -23,15 +23,13 @@ gulp.task('default', ['connect']);
 ```
 
 
-#### Livereload
+#### LiveReload
 ```js
-var
-  gulp = require('gulp'),
+var gulp = require('gulp'),
   connect = require('gulp-connect');
 
 gulp.task('connect', connect.server({
   root: ['app'],
-  port: 1337,
   livereload: true
 }));
 
