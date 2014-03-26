@@ -2,7 +2,7 @@
 ==================
 
 
-> Gulp plugin to run to run a webserver (with LiveReload)
+> Gulp plugin to run a webserver (with LiveReload)
 
 ## Install
 
