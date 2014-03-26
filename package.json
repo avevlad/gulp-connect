@@ -1,7 +1,7 @@
 {
   "name": "gulp-connect",
   "version": "1.0.10",
-  "description": "Gulp plugin connect to server, LiveReload and opening browser",
+  "description": "Gulp plugin to run a webserver (with LiveReload)",
   "license": "MIT",
   "repository": {
     "type": "git",
