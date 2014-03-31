@@ -28,7 +28,7 @@ module.exports = {
         if (typeof o.livereload == 'boolean') o.livereload = {};
         if (!o.livereload.port) o.livereload.port = 35729;
         middleware.push(liveReload({port: o.livereload.port}));
-        util.log(util.colors.green('Connect LiveReload on ' + o.livereload.port + ' port'));
+        util.log(util.colors.green('LiveReload started on port ' + o.livereload.port));
       }
       o.root.forEach(function (path) {
         middleware.push(connect.static(path));
@@ -44,7 +44,7 @@ module.exports = {
             lr.listen(o.livereload.port);
           }
           var url, browsername;
-          util.log(util.colors.green('Server started on ' + o.port + ' port'));
+          util.log(util.colors.green('Server started on port ' + o.port));
           if (o.open) {
             url = 'http://' + o.host + (o.port === 80 ? '' : ':' + o.port) + '/';
             if (o.open.file) {
