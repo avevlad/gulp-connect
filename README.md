@@ -53,6 +53,9 @@ gulp.task('default', ['connect', 'watch']);
 Type: `Array`  
 Default: `['app']`
 
+For example:
+`root: [__dirname+'/']` for current base dir
+
 The root path
 
 #### options.port
