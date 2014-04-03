@@ -52,7 +52,7 @@ gulp.task('default', ['connect', 'watch']);
 
 #### Multiple server
 
-> LiveReload works only one server (connectDev)
+> LiveReload works on a single server (connectDev)
 
 ```js
 var
@@ -122,20 +122,6 @@ Default: `true`
 
 Type: `Number`  
 Default: `35729`
-
-#### options.open.file
-
-Type: `String`  
-Default: `index.html`
-
-The file to open in the browser
-
-#### options.open.browser
-
-Type: `String`  
-Default: the system default browser
-
-The name of the browser (Example: `chrome`, on OSX: `Google Chrome`)
 
 
 ## License
