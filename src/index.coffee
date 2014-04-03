@@ -3,7 +3,7 @@ util = require("gulp-util")
 http = require("http")
 connect = require("connect")
 liveReload = require("connect-livereload")
-tiny_lr = require("tiny-lr")
+tinyLr = require("tiny-lr")
 opt = {}
 lr = null
 
@@ -24,8 +24,8 @@ class ConnectApp
     server.listen opt.port
     @log "Server started http://#{opt.host}:#{opt.port}"
     if opt.livereload
-      tiny_lr.Server::error = ->
-      lr = tiny_lr()
+      tinyLr.Server::error = ->
+      lr = tinyLr()
       lr.listen opt.livereload.port
       @log "LiveReload started on port #{opt.livereload.port}"
 
