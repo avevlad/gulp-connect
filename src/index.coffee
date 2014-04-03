@@ -24,6 +24,7 @@ class ConnectApp
     server.listen opt.port
     @log "Server started http://#{opt.host}:#{opt.port}"
     if opt.livereload
+      tiny_lr.Server::error = ->
       lr = tiny_lr()
       lr.listen opt.livereload.port
       @log "LiveReload started on port #{opt.livereload.port}"
