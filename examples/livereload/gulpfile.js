@@ -7,11 +7,7 @@ gulp.task('connect', function() {
   connect.server({
     root: ['app', 'path'],
     port: 1337,
-    livereload: true,
-    open: {
-      browser: undefined,
-      file: 'index.html'
-    }
+    livereload: true
   });
 });
 
