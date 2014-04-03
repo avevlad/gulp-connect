@@ -29,7 +29,7 @@ gulp.task('default', ['connect']);
 var gulp = require('gulp'),
   connect = require('gulp-connect');
 
-gulp.task('connect', connect({
+gulp.task('connect', connect.server({
   root: ['app'],
   livereload: true
 }));
