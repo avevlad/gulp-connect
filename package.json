@@ -1,6 +1,6 @@
 {
   "name": "gulp-connect",
-  "version": "1.1.1",
+  "version": "2.0",
   "description": "Gulp plugin to run a webserver (with LiveReload)",
   "license": "MIT",
   "repository": {
@@ -26,7 +26,6 @@
     "gulpfriendly",
     "connect",
     "livereload",
-    "open",
     "webserver",
     "server"
   ],

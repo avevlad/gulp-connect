@@ -3,15 +3,19 @@ var
   stylus = require('gulp-stylus'),
   connect = require('../../index');
 
-gulp.task('connect', function() {
+gulp.task('connectDev', function () {
   connect.server({
-    root: ['app', 'path'],
-    port: 1337,
-    livereload: true,
-    open: {
-      browser: undefined,
-      file: 'index.html'
-    }
+    root: ['app'],
+    port: 8000,
+    livereload: true
+  });
+});
+
+gulp.task('connectDist', function () {
+  connect.server({
+    root: ['dist'],
+    port: 5000,
+    livereload: true
   });
 });
 
@@ -32,4 +36,4 @@ gulp.task('watch', function () {
   gulp.watch(['./app/stylus/*.styl'], ['stylus']);
 });
 
-gulp.task('default', ['connect', 'stylus', 'watch']);
+gulp.task('default', ['connectDist', 'connectDev', 'watch']);

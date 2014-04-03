@@ -50,6 +50,50 @@ gulp.task('watch', function () {
 gulp.task('default', ['connect', 'watch']);
 ```
 
+#### Multiple server
+
+```js
+var
+  gulp = require('gulp'),
+  stylus = require('gulp-stylus'),
+  connect = require('gulp-connect');
+
+gulp.task('connectDev', function () {
+  connect.server({
+    root: ['app'],
+    port: 8000,
+    livereload: true
+  });
+});
+
+gulp.task('connectDist', function () {
+  connect.server({
+    root: ['dist'],
+    port: 5000,
+    livereload: true
+  });
+});
+
+gulp.task('html', function () {
+  gulp.src('./app/*.html')
+    .pipe(connect.reload());
+});
+
+gulp.task('stylus', function () {
+  gulp.src('./app/stylus/*.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('./app/css'))
+    .pipe(connect.reload());
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['./app/*.html'], ['html']);
+  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
+});
+
+gulp.task('default', ['connectDist', 'connectDev', 'watch']);
+
+```
 
 ## API
 
@@ -64,33 +108,19 @@ The root path
 #### options.port
 
 Type: `Number`  
-Default: `3000`
+Default: `1337`
 
 The connect webserver port
 
 #### options.livereload
 
 Type: `Object or Boolean`  
-Default: `true`
+Default: `false`
 
 #### options.livereload.port
 
 Type: `Number`  
 Default: `35729`
-
-#### options.open.file
-
-Type: `String`  
-Default: `index.html`
-
-The file to open in the browser
-
-#### options.open.browser
-
-Type: `String`  
-Default: the system default browser
-
-The name of the browser (Example: `chrome`, on OSX: `Google Chrome`)
 
 
 ## License
