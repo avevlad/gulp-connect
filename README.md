@@ -1,4 +1,5 @@
 [gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect) [![Dependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect) [![devDependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect#info=devDependencies)
+==================
 
 > Gulp plugin to run a webserver (with LiveReload)
 
@@ -50,7 +51,7 @@ gulp.task('default', ['connect', 'watch']);
 
 #### options.root
 Type: `Array`
-Default: `['app']`
+Default: `['app']`   
 Example: `root: [__dirname+'/']` for current base dir
 
 For example:
