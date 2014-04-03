@@ -51,7 +51,9 @@ gulp.task('default', ['connect', 'watch']);
 ```
 
 #### Multiple server
+
 > LiveReload works only one server (connectDev)
+
 ```js
 var
   gulp = require('gulp'),
