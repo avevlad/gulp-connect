@@ -56,7 +56,7 @@ gulp.task('default', ['connect', 'watch']);
 var
   gulp = require('gulp'),
   stylus = require('gulp-stylus'),
-  connect = require('../../index');
+  connect = require('gulp-connect');
 
 gulp.task('connectDev', function () {
   connect.server({
