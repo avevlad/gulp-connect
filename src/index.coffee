@@ -16,7 +16,7 @@ class ConnectApp
     @oldMethod("open") if opt.open
     @server()
 
-  server: () ->
+  server: ->
     middleware = @middleware()
     app = connect.apply(null, middleware)
     server = http.createServer(app)
@@ -28,7 +28,7 @@ class ConnectApp
       lr.listen opt.livereload.port
       @log "LiveReload started on port #{opt.livereload.port}"
 
-  middleware: () ->
+  middleware: ->
     middleware = if opt.middleware then opt.middleware.call(this, connect, opt) else []
     if opt.livereload
       opt.livereload = {}  if typeof opt.livereload is "boolean"
