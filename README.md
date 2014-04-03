@@ -109,14 +109,14 @@ The root path
 #### options.port
 
 Type: `Number`  
-Default: `3000`
+Default: `1337`
 
 The connect webserver port
 
 #### options.livereload
 
 Type: `Object or Boolean`  
-Default: `true`
+Default: `false`
 
 #### options.livereload.port
 
