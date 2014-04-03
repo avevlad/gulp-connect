@@ -1,7 +1,6 @@
 [gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect) [![Dependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect) [![devDependency Status](https://david-dm.org/avevlad/gulp-connect.png)](https://david-dm.org/avevlad/gulp-connect#info=devDependencies)
 ==================
 
-
 > Gulp plugin to run a webserver (with LiveReload)
 
 ## Install
@@ -17,7 +16,9 @@ npm install --save-dev gulp-connect
 var gulp = require('gulp'),
   connect = require('gulp-connect');
 
-gulp.task('connect', connect.server());
+gulp.task('connect', function() {
+  connect();
+});
 
 gulp.task('default', ['connect']);
 ```
@@ -49,9 +50,9 @@ gulp.task('default', ['connect', 'watch']);
 ## API
 
 #### options.root
-
-Type: `Array`  
-Default: `['app']`
+Type: `Array`
+Default: `['app']`   
+Example: `root: [__dirname+'/']` for current base dir
 
 For example:
 `root: [__dirname+'/']` for current base dir
@@ -74,21 +75,6 @@ Default: `true`
 
 Type: `Number`  
 Default: `35729`
-
-#### options.open.file
-
-Type: `String`  
-Default: `index.html`
-
-The file to open in the browser
-
-#### options.open.browser
-
-Type: `String`  
-Default: the system default browser
-
-The name of the browser (Example: `chrome`, on OSX: `Google Chrome`)
-
 
 ## License
 
