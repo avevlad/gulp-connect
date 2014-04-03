@@ -3,15 +3,17 @@ var
   stylus = require('gulp-stylus'),
   connect = require('../../index');
 
-gulp.task('connect', connect.server({
-  root: ['app', 'path'],
-  port: 1337,
-  livereload: true,
-  open: {
-    browser: undefined,
-    file: 'index.html'
-  }
-}));
+gulp.task('connect', function() {
+  connect.server({
+    root: ['app', 'path'],
+    port: 1337,
+    livereload: true,
+    open: {
+      browser: undefined,
+      file: 'index.html'
+    }
+  });
+});
 
 gulp.task('html', function () {
   gulp.src('./app/*.html')
