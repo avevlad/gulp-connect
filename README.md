@@ -98,32 +98,32 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 
 #### options.root
 
-Type: `Array or String`
-Default: `['app']`
+Type: `Array or String`   
+Default: `['app']`   
 For example: `root: '__dirname'` for current base dir
 
 The root path
 
 #### options.port
 
-Type: `Number`
+Type: `Number`   
 Default: `1337`
 
 The connect webserver port
 
 #### options.livereload
 
-Type: `Object or Boolean`
+Type: `Object or Boolean`   
 Default: `false`
 
 #### options.livereload.port
 
-Type: `Number`
+Type: `Number`   
 Default: `35729`
 
 #### options.middleware
 
-Type: `Function`
+Type: `Function`   
 Default: `[]`
 
 ~~~js
