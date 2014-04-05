@@ -20,7 +20,7 @@ class ConnectApp
     middleware = @middleware()
     app = connect.apply(null, middleware)
     server = http.createServer(app)
-    app.use connect.directory(opt.root[0]) if opt.root.length
+    app.use connect.directory(if typeof opt.root == "object" then opt.root[0] else opt.root)
     server.listen opt.port
     @log "Server started http://#{opt.host}:#{opt.port}"
     if opt.livereload
@@ -35,8 +35,9 @@ class ConnectApp
       opt.livereload = {}  if typeof opt.livereload is "boolean"
       opt.livereload.port = 35729  unless opt.livereload.port
       middleware.push liveReload(port: opt.livereload.port)
-    opt.root.forEach (path) ->
-      middleware.push connect.static(path)
+    if typeof opt.root == "object"
+      opt.root.forEach (path) ->
+        middleware.push connect.static(path)
     return middleware
 
   log: (@text) ->
