@@ -1,4 +1,4 @@
-[gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.png)](http://badge.fury.io/js/gulp-connect)
+[gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.svg)](http://badge.fury.io/js/gulp-connect)
 ==================
 
 
@@ -99,8 +99,8 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 
 #### options.root
 
-Type: `Array or String`
-Default: `['app']`
+Type: `Array or String`  
+Default: `['app']`  
 For example: `root: '__dirname'` for current base dir
 
 The root path
@@ -124,7 +124,7 @@ Default: `35729`
 
 #### options.middleware
 
-Type: `Function`
+Type: `Function`  
 Default: `[]`
 
 ~~~js
