@@ -13,7 +13,7 @@ gulp.task('connectDev', function () {
 gulp.task('connectDist', function () {
   connect.server({
     root: 'dist',
-    port: 5000,
+    port: 8001,
     livereload: true
   });
 });

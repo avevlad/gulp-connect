@@ -10,7 +10,7 @@ lr = null
 class ConnectApp
   constructor: (options) ->
     opt = options
-    opt.port = opt.port || "1337"
+    opt.port = opt.port || "8080"
     opt.root = opt.root || ["app"]
     opt.host = opt.host || "localhost"
     @oldMethod("open") if opt.open
