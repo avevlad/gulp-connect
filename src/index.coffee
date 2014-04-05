@@ -5,13 +5,13 @@ connect = require("connect")
 liveReload = require("connect-livereload")
 tiny_lr = require("tiny-lr")
 opt = {}
-lr = null
+lr = undefined
 
 class ConnectApp
   constructor: (options) ->
     opt = options
     opt.port = opt.port || "8080"
-    opt.root = opt.root || ["app"]
+    opt.root = opt.root || __dirname
     opt.host = opt.host || "localhost"
     @oldMethod("open") if opt.open
     @server()
