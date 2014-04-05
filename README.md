@@ -32,7 +32,7 @@ var gulp = require('gulp'),
 
 gulp.task('connect', function() {
   connect.server({
-    root: ['app'],
+    root: 'app',
     port: 1337,
     livereload: true
   });
@@ -53,14 +53,13 @@ gulp.task('default', ['connect', 'watch']);
 #### Multiple server
 
 ```js
-var
-  gulp = require('gulp'),
+var gulp = require('gulp'),
   stylus = require('gulp-stylus'),
   connect = require('gulp-connect');
 
 gulp.task('connectDev', function () {
   connect.server({
-    root: ['app'],
+    root: ['app', 'tmp'],
     port: 8000,
     livereload: true
   });
@@ -68,7 +67,7 @@ gulp.task('connectDev', function () {
 
 gulp.task('connectDist', function () {
   connect.server({
-    root: ['dist'],
+    root: 'dist',
     port: 5000,
     livereload: true
   });
@@ -99,32 +98,32 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 
 #### options.root
 
-Type: `Array or String`  
-Default: `['app']`  
+Type: `Array or String`
+Default: `['app']`
 For example: `root: '__dirname'` for current base dir
 
 The root path
 
 #### options.port
 
-Type: `Number`  
+Type: `Number`
 Default: `1337`
 
 The connect webserver port
 
 #### options.livereload
 
-Type: `Object or Boolean`  
+Type: `Object or Boolean`
 Default: `false`
 
 #### options.livereload.port
 
-Type: `Number`  
+Type: `Number`
 Default: `35729`
 
 #### options.middleware
 
-Type: `Function`  
+Type: `Function`
 Default: `[]`
 
 ~~~js

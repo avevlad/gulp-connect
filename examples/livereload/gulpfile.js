@@ -1,5 +1,4 @@
-var
-  gulp = require('gulp'),
+var gulp = require('gulp'),
   stylus = require('gulp-stylus'),
   connect = require('../../index');
 

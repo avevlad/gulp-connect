@@ -1,5 +1,4 @@
-var
-  gulp = require('gulp'),
+var gulp = require('gulp'),
   connect = require('../../index');
 
 gulp.task('connect', function() {

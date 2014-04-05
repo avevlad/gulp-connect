@@ -1,11 +1,10 @@
-var
-  gulp = require('gulp'),
+var gulp = require('gulp'),
   stylus = require('gulp-stylus'),
   connect = require('../../index');
 
 gulp.task('connectDev', function () {
   connect.server({
-    root: ['app'],
+    root: ['app', 'tmp'],
     port: 8000,
     livereload: true
   });
@@ -13,7 +12,7 @@ gulp.task('connectDev', function () {
 
 gulp.task('connectDist', function () {
   connect.server({
-    root: ['dist'],
+    root: 'dist',
     port: 5000,
     livereload: true
   });
