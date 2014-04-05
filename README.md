@@ -99,9 +99,9 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 
 #### options.root
 
-Type: `Array`  
-Default: `['app']`  
-For example: `root: [__dirname+'/']` for current base dir
+Type: `Array or String`
+Default: `['app']`
+For example: `root: '__dirname'` for current base dir
 
 The root path
 
@@ -121,6 +121,24 @@ Default: `false`
 
 Type: `Number`  
 Default: `35729`
+
+#### options.middleware
+
+Type: `Function`
+Default: `[]`
+
+~~~js
+gulp.task('connect', function() {
+  connect.server({
+    root: "app",
+    middleware: function(connect, opt) {
+      return [
+        // ...
+      ]
+    }
+  });
+});
+~~~
 
 
 ## License
