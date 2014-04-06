@@ -1,4 +1,4 @@
-[gulp](https://github.com/wearefractal/gulp)-connect [![NPM version](https://badge.fury.io/js/gulp-connect.svg)](http://badge.fury.io/js/gulp-connect)
+[gulp](https://github.com/wearefractal/gulp)-connect  [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url]
 ==================
 
 
@@ -142,3 +142,9 @@ gulp.task('connect', function() {
 ## License
 
 MIT © Vladislav Derjavin <dev@vld.me>
+
+
+[npm-url]: https://npmjs.org/package/gulp-connect
+[npm-image]: https://badge.fury.io/js/gulp-connect.svg
+[downloads-url]: https://github.com/AveVlad/gulp-connect/
+[downloads-image]: http://img.shields.io/npm/dm/gulp-connect.svg
