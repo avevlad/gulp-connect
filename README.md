@@ -99,8 +99,7 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 #### options.root
 
 Type: `Array or String`   
-Default: `['app']`   
-For example: `root: '__dirname'` for current base dir
+Default: `Directory with gulpfile`   
 
 The root path
 
