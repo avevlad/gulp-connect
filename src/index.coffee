@@ -1,3 +1,4 @@
+path = require("path")
 es = require("event-stream")
 util = require("gulp-util")
 http = require("http")
@@ -11,7 +12,7 @@ class ConnectApp
   constructor: (options) ->
     opt = options
     opt.port = opt.port || "8080"
-    opt.root = opt.root || __dirname
+    opt.root = opt.root || path.dirname(module.parent.id)
     opt.host = opt.host || "localhost"
     @oldMethod("open") if opt.open
     @server()
@@ -38,6 +39,8 @@ class ConnectApp
     if typeof opt.root == "object"
       opt.root.forEach (path) ->
         middleware.push connect.static(path)
+    else
+      middleware.push connect.static(opt.root)
     return middleware
 
   log: (@text) ->
