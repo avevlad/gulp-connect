@@ -1,4 +1,4 @@
-[gulp](https://github.com/wearefractal/gulp)-connect  [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url]
+[gulp](https://github.com/wearefractal/gulp)-connect  [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![Travis][travis-image]][travis-url]
 ==================
 
 
@@ -146,5 +146,7 @@ MIT © Vladislav Derjavin <dev@vld.me>
 
 [npm-url]: https://npmjs.org/package/gulp-connect
 [npm-image]: https://badge.fury.io/js/gulp-connect.svg
+[travis-url]: https://travis-ci.org/AveVlad/gulp-connect
+[travis-image]: https://travis-ci.org/AveVlad/gulp-connect.svg
 [downloads-url]: https://github.com/AveVlad/gulp-connect/
 [downloads-image]: http://img.shields.io/npm/dm/gulp-connect.svg
