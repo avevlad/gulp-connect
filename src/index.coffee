@@ -6,6 +6,7 @@ connect = require("connect")
 liveReload = require("connect-livereload")
 tiny_lr = require("tiny-lr")
 opt = {}
+server = undefined
 lr = undefined
 
 class ConnectApp
@@ -62,3 +63,4 @@ module.exports =
         lr.changed body:
           files: file.path
       callback null, file
+  serverClose: -> do server.close

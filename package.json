@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "gulp": "~3.5.1",
-    "gulp-stylus": "0.0.11"
+    "gulp-stylus": "0.0.11",
+    "mocha": "^1.18.2",
+    "supertest": "^0.10.0"
   }
 }
