@@ -1,6 +1,6 @@
 {
   "name": "gulp-connect",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Gulp plugin to run a webserver (with LiveReload)",
   "license": "MIT",
   "repository": {
@@ -18,6 +18,9 @@
       "homepage": "https://github.com/AveVlad/gulp-connect/graphs/contributors"
     }
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "engines": {
     "node": ">=0.10.0"
   },

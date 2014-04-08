@@ -1,8 +1,9 @@
 var request = require('supertest');
-var connect = require('../index');
+var connect = require('../src/index');
+require('mocha');
 
 describe('gulp-connect', function () {
-  it('Simple test', function (done) {
+  it('Simple', function (done) {
     connect.server();
     request('http://localhost:8080')
       .get('/fixtures/simplest/test.txt')
@@ -12,6 +13,88 @@ describe('gulp-connect', function () {
         connect.serverClose();
         if (err) return done(err);
         done()
+      });
+  })
+  it('Root string', function (done) {
+    connect.server({
+      root: __dirname + "/fixtures"
+    });
+    request('http://localhost:8080')
+      .get('/multiple/app/index.html')
+      .expect(/app test/)
+      .end(function (err, res) {
+        connect.serverClose();
+        if (err) return done(err);
+        done()
+      });
+  })
+  it('Root array', function (done) {
+    connect.server({
+      root: [__dirname + "/fixtures/multiple/app", __dirname + "/fixtures/multiple/dist"]
+    });
+    request('http://localhost:8080')
+      .get('/index.html')
+      .expect(/app test/)
+      .expect(200)
+      .end(function (err) {
+        if (err) return done(err);
+      });
+    request('http://localhost:8080')
+      .get('/dist.html')
+      .expect(/dist test/)
+      .expect(200)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done()
+      });
+  })
+  it('Port test', function (done) {
+    connect.server({
+      root: __dirname + "/fixtures/multiple/app",
+      port: 3333
+    });
+    request('http://localhost:3333')
+      .get('/index.html')
+      .expect(/app test/)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done()
+      });
+  })
+  it('Livereload test', function (done) {
+    connect.server({
+      livereload: true
+    });
+    request('http://localhost:35729')
+      .get('/')
+      .expect('Content-Type', /json/)
+      .end(function (err) {
+        if (err) return done(err);
+      });
+    request('http://localhost:35729')
+      .get('/livereload.js')
+      .expect(200)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done();
+      });
+  })
+  it('Livereload port', function (done) {
+    connect.server({
+      livereload: {
+        port: 35000
+      }
+    });
+    request('http://localhost:35000')
+      .get('/')
+      .expect('Content-Type', /json/)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done();
       });
   })
 })
