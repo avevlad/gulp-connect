@@ -7,6 +7,3 @@ before_install:
 before_script:
   - "ls"
   - "coffee -o . -bc src/"
-  - "cd gulp-connect"
-  - "cd ls"
-  - "coffee -o . -bc src/"
