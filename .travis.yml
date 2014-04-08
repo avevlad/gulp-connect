@@ -5,4 +5,4 @@ node_js:
 before_install:
   - "npm install -g coffee-script"
 before_script:
-  - "coffee -o . -c src/"
+  - "coffee -o . -bc src/"
