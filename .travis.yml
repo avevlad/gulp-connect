@@ -5,4 +5,8 @@ node_js:
 before_install:
   - "npm install -g coffee-script"
 before_script:
+  - "ls"
+  - "coffee -o . -bc src/"
+  - "cd gulp-connect"
+  - "cd ls"
   - "coffee -o . -bc src/"
