@@ -1,5 +1,5 @@
 var request = require('supertest');
-var connect = require('../src/index');
+var connect = require('../index');
 require('mocha');
 
 describe('gulp-connect', function () {
