@@ -109,6 +109,11 @@ Default: `8080`
 
 The connect webserver port
 
+#### options.host
+
+Type: `String`   
+Default: `localhost`
+
 #### options.livereload
 
 Type: `Object or Boolean`   
@@ -137,10 +142,9 @@ gulp.task('connect', function() {
 });
 ```
 
+## Contributors 
 
-## License
-
-MIT © Vladislav Derjavin <dev@vld.me>
+[AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
 
 
 [npm-url]: https://npmjs.org/package/gulp-connect
