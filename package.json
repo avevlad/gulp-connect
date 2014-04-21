@@ -1,6 +1,6 @@
 {
   "name": "gulp-connect-multi",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A fork of gulp-connect with multiple servers support",
   "license": "MIT",
   "repository": {
@@ -27,7 +27,7 @@
     "node": ">=0.10.0"
   },
   "keywords": [
-    "gulpfriendly",
+    "deprecated",
     "connect",
     "livereload",
     "open",
