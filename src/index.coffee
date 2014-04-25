@@ -21,7 +21,15 @@ class ConnectApp
   server: ->
     middleware = @middleware()
     app = connect.apply(null, middleware)
-    server = http.createServer(app)
+    if opt.https?
+      server = https.createServer
+        key: opt.https.key || fs.readFileSync 'certs/server.key'
+        cert: opt.https.cert || fs.readFileSync 'certs/server.crt'
+        ca: opt.https.ca || fs.readFileSync 'certs/ca.crt'
+        passphrase: opt.https.passphrase || 'gulp'
+        app
+    else
+      server = http.createServer app
     app.use connect.directory(if typeof opt.root == "object" then opt.root[0] else opt.root)
     server.listen opt.port
     @log "Server started http://#{opt.host}:#{opt.port}"
