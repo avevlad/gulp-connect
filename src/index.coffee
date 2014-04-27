@@ -55,10 +55,12 @@ class ConnectApp
     return middleware
 
   log: (@text) ->
-    util.log util.colors.green(@text)
+    if !opt.silent
+      util.log util.colors.green(@text)
 
   logWarning: (@text) ->
-    util.log util.colors.yellow(@text)
+    if !opt.silent
+      util.log util.colors.yellow(@text)
 
   oldMethod: (type) ->
     text = 'does not work in gulp-connect v 2.*. Please read "readme" https://github.com/AveVlad/gulp-connect'
