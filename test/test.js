@@ -2,6 +2,7 @@ var request = require('supertest');
 var connect = require('../index');
 require('mocha');
 
+
 describe('gulp-connect', function () {
   it('Simple', function (done) {
     connect.server();
@@ -55,6 +56,22 @@ describe('gulp-connect', function () {
       port: 3333
     });
     request('http://localhost:3333')
+      .get('/index.html')
+      .expect(/app test/)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done()
+      });
+  })
+  it('Https test', function (done) {
+    //suppress invalid self-signed ssl certificate error
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+    connect.server({
+      root: __dirname + "/fixtures/multiple/app",
+      https: true
+    });
+    request('https://localhost:8080')
       .get('/index.html')
       .expect(/app test/)
       .end(function (err) {
