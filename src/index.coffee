@@ -25,9 +25,9 @@ class ConnectApp
     app = connect.apply(null, middleware)
     if opt.https?
       server = https.createServer
-        key: opt.https.key || fs.readFileSync 'certs/server.key'
-        cert: opt.https.cert || fs.readFileSync 'certs/server.crt'
-        ca: opt.https.ca || fs.readFileSync 'certs/ca.crt'
+        key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
+        cert: opt.https.cert || fs.readFileSync __dirname + '/certs/server.crt'
+        ca: opt.https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
         passphrase: opt.https.passphrase || 'gulp'
         app
     else
