@@ -99,6 +99,26 @@ describe('gulp-connect', function () {
         done();
       });
   })
+  it('Livereload https test', function (done) {
+    connect.server({
+      livereload: true,
+      https: true
+    });
+    request('http://localhost:35729')
+      .get('/')
+      .expect('Content-Type', /json/)
+      .end(function (err) {
+        if (err) return done(err);
+      });
+    request('http://localhost:35729')
+      .get('/livereload.js')
+      .expect(200)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done();
+      });
+  })
   it('Livereload port', function (done) {
     connect.server({
       livereload: {
