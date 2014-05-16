@@ -13,6 +13,15 @@ gulp.task('connect', connect.server({
   }
 }));
 
+gulp.task('connect-no-browser', connect.server({
+    root: ['app', 'path'],
+    port: 1337,
+    livereload: true,
+    open: {
+        browser: 'none'
+    }
+}));
+
 gulp.task('html', function () {
   gulp.src('./app/*.html')
     .pipe(connect.reload());
@@ -31,3 +40,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connect', 'stylus', 'watch']);
+gulp.task('connect-only', ['connect-no-browser', 'stylus', 'watch']);
