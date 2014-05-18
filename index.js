@@ -6,7 +6,9 @@ var open = require('open');
 var connect = require('connect');
 var liveReload = require('connect-livereload');
 var tiny_lr = require('tiny-lr');
-var lr;
+//lr_map,this listen port is the key
+var lr_map = {};
+//var lr;
 
 function Server() {
   this.o = {};
@@ -37,8 +39,10 @@ function Server() {
         .listen(s.o.port)
         .on('listening', function () {
           if (s.o.livereload) {
-            lr = tiny_lr();
-            lr.listen(s.o.livereload.port);
+            //lr = tiny_lr();
+            //lr.listen(s.o.livereload.port);
+            lr_map[s.o.port] = tiny_lr();
+            lr_map[s.o.port].listen(s.o.livereload.port);
           }
           var url, browsername;
           util.log(util.colors.green('Server started on ' + s.o.port + ' port'));
@@ -60,6 +64,7 @@ function Server() {
   this.reload = function () {
     var s = this;
     return es.map(function (file, callback) {
+      var lr = lr_map[s.o.port]; 
       if (s.o.livereload && typeof lr == "object") {
         lr.changed({
           body: {
