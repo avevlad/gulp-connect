@@ -19,7 +19,6 @@ function Server() {
     s.o.open = s.o.open || {};
     if (!s.o.open.file) s.o.open.file = '';
     if (!s.o.open.browser) s.o.open.browser = undefined;
-
     return function () {
       var middleware = s.o.middleware ? s.o.middleware.call(s, connect, s.o) : [];
       if (s.o.livereload) {
@@ -45,16 +44,19 @@ function Server() {
           util.log(util.colors.green('Server started on ' + s.o.port + ' port'));
           if (s.o.open) {
             url = 'http://localhost:' + s.o.port + '/' + s.o.open.file;
-            if (s.o.open.browser) browsername = s.o.open.browser;
-            else browsername = 'default browser';
-            open(url, s.o.open.browser, function (error) {
-              if (error) util.log(util.colors.red(error));
-              else util.log(util.colors.green('Opened ' + url + ' in ' + browsername));
-            });
+            s.o.open.browser ? browsername = s.o.open.browser : browsername = 'default browser';
+            if (s.o.open.browser !== 'none' && s.o.open.browser !== 'undefined' && s.o.open.browser !== undefined) {
+              open(url, s.o.open.browser, function (error) {
+                if (error) util.log(util.colors.red(error));
+                else util.log(util.colors.green('Opened ' + url + ' in ' + browsername));
+              });
+            } else {
+              util.log(util.colors.yellow('no browser specified'));
+            }
           }
         })
     };
-  },
+  };
   this.reload = function () {
     var s = this;
     return es.map(function (file, callback) {
@@ -74,8 +76,8 @@ function Server() {
 
 module.exports = function (config) {
   var s = new Server();
-  if(config) {
+  if (config) {
     s.server(config);
   }
   return s;
-}
+};
