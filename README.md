@@ -233,6 +233,10 @@ Default: the system default browser
 
 The type of browser, like `chrome`
 
+OR
+
+`none` if you don't want a browser to open
+
 
 ## License
 
