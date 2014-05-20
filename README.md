@@ -85,7 +85,7 @@ gulp.task('connect', connect.server({
 }));
 ```
 
-**No browser option**
+**no browser option**
 
 ```js
 gulp.task('connect-no-browser', connect.server({
@@ -235,7 +235,7 @@ The type of browser, like `chrome`
 
 OR
 
-`none` if you don't want a browser to open
+`none` if you don't want a browser window to open
 
 
 ## License
