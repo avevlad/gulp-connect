@@ -85,6 +85,19 @@ gulp.task('connect', connect.server({
 }));
 ```
 
+**No browser option**
+
+```js
+gulp.task('connect-no-browser', connect.server({
+    root: ['app', 'path'],
+    port: 1337,
+    open: {
+        browser: 'none' // or undefined
+    }
+}));
+```
+
+
 ### multiple connects + livereload + open + stylus
 ```js
 var
