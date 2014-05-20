@@ -85,6 +85,19 @@ gulp.task('connect', connect.server({
 }));
 ```
 
+**no browser option**
+
+```js
+gulp.task('connect-no-browser', connect.server({
+    root: ['app', 'path'],
+    port: 1337,
+    open: {
+        browser: 'none' // or undefined
+    }
+}));
+```
+
+
 ### multiple connects + livereload + open + stylus
 ```js
 var
@@ -219,6 +232,10 @@ Type: `String`
 Default: the system default browser
 
 The type of browser, like `chrome`
+
+OR
+
+`none` if you don't want a browser window to open
 
 
 ## License
