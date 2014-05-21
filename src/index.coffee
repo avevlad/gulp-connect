@@ -52,6 +52,10 @@ class ConnectApp
         middleware.push connect.static(path)
     else
       middleware.push connect.static(opt.root)
+    if opt.fallback
+      middleware.push (req, res) ->
+        require('fs').createReadStream(opt.fallback).pipe(res);
+
     return middleware
 
   log: (@text) ->
