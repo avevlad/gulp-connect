@@ -25,9 +25,9 @@ class ConnectApp
     app = connect.apply(null, middleware)
     if opt.https?
       server = https.createServer
-        key: opt.https.key || fs.readFileSync 'certs/server.key'
-        cert: opt.https.cert || fs.readFileSync 'certs/server.crt'
-        ca: opt.https.ca || fs.readFileSync 'certs/ca.crt'
+        key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
+        cert: opt.https.cert || fs.readFileSync __dirname + '/certs/server.crt'
+        ca: opt.https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
         passphrase: opt.https.passphrase || 'gulp'
         app
     else
@@ -37,7 +37,12 @@ class ConnectApp
     @log "Server started http://#{opt.host}:#{opt.port}"
     if opt.livereload
       tiny_lr.Server::error = ->
-      lr = tiny_lr()
+      if opt.https?
+        lr = tiny_lr
+          key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
+          cert: opt.https.cert || fs.readFileSync __dirname + '/certs/server.crt'
+      else
+        lr = tiny_lr()
       lr.listen opt.livereload.port
       @log "LiveReload started on port #{opt.livereload.port}"
 

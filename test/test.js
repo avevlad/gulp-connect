@@ -2,6 +2,7 @@ var request = require('supertest');
 var connect = require('../index');
 require('mocha');
 
+
 describe('gulp-connect', function () {
   it('Simple', function (done) {
     connect.server();
@@ -63,9 +64,45 @@ describe('gulp-connect', function () {
         done()
       });
   })
+  it('Https test', function (done) {
+    //suppress invalid self-signed ssl certificate error
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+    connect.server({
+      root: __dirname + "/fixtures/multiple/app",
+      https: true
+    });
+    request('https://localhost:8080')
+      .get('/index.html')
+      .expect(/app test/)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done()
+      });
+  })
   it('Livereload test', function (done) {
     connect.server({
       livereload: true
+    });
+    request('http://localhost:35729')
+      .get('/')
+      .expect('Content-Type', /json/)
+      .end(function (err) {
+        if (err) return done(err);
+      });
+    request('http://localhost:35729')
+      .get('/livereload.js')
+      .expect(200)
+      .end(function (err) {
+        connect.serverClose();
+        if (err) return done(err);
+        done();
+      });
+  })
+  it('Livereload https test', function (done) {
+    connect.server({
+      livereload: true,
+      https: true
     });
     request('http://localhost:35729')
       .get('/')

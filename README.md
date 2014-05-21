@@ -114,6 +114,11 @@ The connect webserver port
 Type: `String`
 Default: `localhost`
 
+#### options.https
+
+Type: `Boolean`   
+Default: `false`
+
 #### options.livereload
 
 Type: `Object or Boolean`
