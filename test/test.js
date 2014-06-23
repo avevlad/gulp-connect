@@ -134,4 +134,18 @@ describe('gulp-connect', function () {
         done();
       });
   })
+  it('Fallback test', function (done) {
+    connect.server({
+      fallback: __dirname + '/fixtures/simplest/test.txt'
+    });
+    request('http://localhost:8080')
+      .get('/not/existing/path')
+      .expect(/Hello world/)
+      .expect(200)
+      .end(function (err, res) {
+        connect.serverClose();
+        if (err) return done(err);
+        done()
+      });
+  })
 })
