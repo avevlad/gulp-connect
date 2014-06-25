@@ -21,8 +21,9 @@ class ConnectApp
     @server()
 
   server: ->
-    middleware = @middleware()
-    app = connect.apply(null, middleware)
+    app = connect()
+    @middleware().forEach (middleware) ->
+      app.use middleware
     if opt.https?
       server = https.createServer
         key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
