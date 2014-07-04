@@ -34,11 +34,29 @@ class ConnectApp
     else
       server = http.createServer app
     app.use connect.directory(if typeof opt.root == "object" then opt.root[0] else opt.root)
-    server.listen opt.port, (err) ->
+    server.listen opt.port, (err) =>
       if err
         @log "Error on starting server: #{err}"
       else
         @log "Server started http://#{opt.host}:#{opt.port}"
+        
+        stoped = false;
+        
+        server.on 'close', =>
+          if (!stoped)
+            stoped = true
+            @log "Server stopped"
+        
+        stopServer = =>
+          if (!stoped)
+            server.close()
+            process.nextTick( ->
+              process.exit(0);
+            )
+            
+        process.on("SIGINT", stopServer);
+        process.on("exit", stopServer);
+        
         if opt.livereload
           tiny_lr.Server::error = ->
           if opt.https?
