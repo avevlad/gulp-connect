@@ -4,7 +4,7 @@
 
 > Gulp plugin to run a webserver (with LiveReload)
 
-##### Hint: New plugin available
+##### Hint: [New plugin](https://github.com/schickling/gulp-webserver) available
 
 New plugin based on connect 3 using the `gulp.src()` API. Written in plain javascript.
 https://github.com/schickling/gulp-webserver
