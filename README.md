@@ -1,5 +1,5 @@
-[gulp](https://github.com/wearefractal/gulp)-connect  [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][downloads-url] [![Travis][travis-image]][travis-url]
-==================
+gulp-connect [![Build Status](http://img.shields.io/travis/schickling/gulp-webserver.svg?style=flat)](https://travis-ci.org/avevlad/gulp-connect) [![](http://img.shields.io/npm/dm/gulp-connect.svg?style=flat)](https://www.npmjs.org/package/gulp-connect) [![](http://img.shields.io/npm/v/gulp-connect.svg?style=flat)](https://www.npmjs.org/package/gulp-connect)
+==============
 
 
 > Gulp plugin to run a webserver (with LiveReload)
