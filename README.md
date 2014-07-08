@@ -1,7 +1,6 @@
 gulp-connect [![Build Status](http://img.shields.io/travis/schickling/gulp-webserver.svg?style=flat)](https://travis-ci.org/avevlad/gulp-connect) [![](http://img.shields.io/npm/dm/gulp-connect.svg?style=flat)](https://www.npmjs.org/package/gulp-connect) [![](http://img.shields.io/npm/v/gulp-connect.svg?style=flat)](https://www.npmjs.org/package/gulp-connect)
 ==============
 
-
 > Gulp plugin to run a webserver (with LiveReload)
 
 ##### Hint: [New plugin](https://github.com/schickling/gulp-webserver) available
@@ -9,13 +8,11 @@ gulp-connect [![Build Status](http://img.shields.io/travis/schickling/gulp-webse
 New plugin based on connect 3 using the `gulp.src()` API. Written in plain javascript.
 https://github.com/schickling/gulp-webserver
 
-
 ## Install
 
 ```
 npm install --save-dev gulp-connect
 ```
-
 
 ## Usage
 
@@ -29,7 +26,6 @@ gulp.task('connect', function() {
 
 gulp.task('default', ['connect']);
 ```
-
 
 #### LiveReload
 ```js
@@ -103,48 +99,48 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 
 #### options.root
 
-Type: `Array or String`    
+Type: `Array or String`
 Default: `Directory with gulpfile`
 
 The root path
 
 #### options.port
 
-Type: `Number`    
+Type: `Number`
 Default: `8080`
 
 The connect webserver port
 
 #### options.host
 
-Type: `String`    
+Type: `String`
 Default: `localhost`
 
 #### options.https
 
-Type: `Boolean`       
+Type: `Boolean`
 Default: `false`
 
 #### options.livereload
 
-Type: `Object or Boolean`    
+Type: `Object or Boolean`
 Default: `false`
 
 #### options.livereload.port
 
-Type: `Number`    
+Type: `Number`
 Default: `35729`
 
 #### options.fallback
 
-Type: `String`    
+Type: `String`
 Default: `undefined`
 
 Fallback file (e.g. `index.html`)
 
 #### options.middleware
 
-Type: `Function`    
+Type: `Function`
 Default: `[]`
 
 ```js
@@ -163,4 +159,3 @@ gulp.task('connect', function() {
 ## Contributors
 
 [AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
-
