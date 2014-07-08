@@ -103,48 +103,48 @@ gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 
 #### options.root
 
-Type: `Array or String`
+Type: `Array or String`    
 Default: `Directory with gulpfile`
 
 The root path
 
 #### options.port
 
-Type: `Number`
+Type: `Number`    
 Default: `8080`
 
 The connect webserver port
 
 #### options.host
 
-Type: `String`
+Type: `String`    
 Default: `localhost`
 
 #### options.https
 
-Type: `Boolean`   
+Type: `Boolean`       
 Default: `false`
 
 #### options.livereload
 
-Type: `Object or Boolean`
+Type: `Object or Boolean`    
 Default: `false`
 
 #### options.livereload.port
 
-Type: `Number`
+Type: `Number`    
 Default: `35729`
 
 #### options.fallback
 
-Type: `String`
+Type: `String`    
 Default: `undefined`
 
 Fallback file (e.g. `index.html`)
 
 #### options.middleware
 
-Type: `Function`
+Type: `Function`    
 Default: `[]`
 
 ```js
@@ -164,10 +164,3 @@ gulp.task('connect', function() {
 
 [AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
 
-
-[npm-url]: https://npmjs.org/package/gulp-connect
-[npm-image]: https://badge.fury.io/js/gulp-connect.svg
-[travis-url]: https://travis-ci.org/AveVlad/gulp-connect
-[travis-image]: https://travis-ci.org/AveVlad/gulp-connect.svg
-[downloads-url]: https://github.com/AveVlad/gulp-connect/
-[downloads-image]: http://img.shields.io/npm/dm/gulp-connect.svg
