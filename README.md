@@ -51,6 +51,21 @@ gulp.task('watch', function () {
 gulp.task('default', ['connect', 'watch']);
 ```
 
+
+#### Start and stop server
+
+```js
+gulp.task('jenkins-tests', function() {
+  connect.server({
+    port: 8888
+  });
+  // run some headless tests with phantomjs
+  // when process exits:
+  connect.serverClose();
+});
+```
+
+
 #### Multiple server
 
 ```js
