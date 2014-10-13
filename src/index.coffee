@@ -34,18 +34,39 @@ class ConnectApp
     else
       server = http.createServer app
     app.use connect.directory(if typeof opt.root == "object" then opt.root[0] else opt.root)
-    server.listen opt.port
-    @log "Server started http://#{opt.host}:#{opt.port}"
-    if opt.livereload
-      tiny_lr.Server::error = ->
-      if opt.https?
-        lr = tiny_lr
-          key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
-          cert: opt.https.cert || fs.readFileSync __dirname + '/certs/server.crt'
+    server.listen opt.port, (err) =>
+      if err
+        @log "Error on starting server: #{err}"
       else
-        lr = tiny_lr()
-      lr.listen opt.livereload.port
-      @log "LiveReload started on port #{opt.livereload.port}"
+        @log "Server started http://#{opt.host}:#{opt.port}"
+        
+        stoped = false;
+        
+        server.on 'close', =>
+          if (!stoped)
+            stoped = true
+            @log "Server stopped"
+        
+        stopServer = =>
+          if (!stoped)
+            server.close()
+            process.nextTick( ->
+              process.exit(0);
+            )
+            
+        process.on("SIGINT", stopServer);
+        process.on("exit", stopServer);
+        
+        if opt.livereload
+          tiny_lr.Server::error = ->
+          if opt.https?
+            lr = tiny_lr
+              key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
+              cert: opt.https.cert || fs.readFileSync __dirname + '/certs/server.crt'
+          else
+            lr = tiny_lr()
+          lr.listen opt.livereload.port
+          @log "LiveReload started on port #{opt.livereload.port}"
 
   middleware: ->
     middleware = if opt.middleware then opt.middleware.call(this, connect, opt) else []
