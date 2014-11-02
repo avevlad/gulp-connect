@@ -41,14 +41,23 @@ class ConnectApp
         @log "Server started http://#{opt.host}:#{opt.port}"
         
         stoped = false;
+        sockets = [];
         
         server.on 'close', =>
           if (!stoped)
             stoped = true
             @log "Server stopped"
+
+        server.on "connection", (socket) =>
+          sockets.push socket
+          socket.on "close", =>
+            sockets.splice sockets.indexOf(socket), 1
         
         stopServer = =>
           if (!stoped)
+            sockets.forEach (socket) =>
+              socket.destroy()
+
             server.close()
             process.nextTick( ->
               process.exit(0);
