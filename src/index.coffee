@@ -11,12 +11,15 @@ opt = {}
 server = undefined
 lr = undefined
 
+process.setMaxListeners 0
+
 class ConnectApp
   constructor: (options) ->
     opt = options
     opt.port = opt.port || "8080"
     opt.root = opt.root || path.dirname(module.parent.id)
     opt.host = opt.host || "localhost"
+    opt.plugins = opt.plugins || []
     @oldMethod("open") if opt.open
     @server()
 
@@ -33,6 +36,8 @@ class ConnectApp
         app
     else
       server = http.createServer app
+    opt.plugins.forEach (plugin) ->
+      plugin(server)
     app.use connect.directory(if typeof opt.root == "object" then opt.root[0] else opt.root)
     server.listen opt.port, (err) =>
       if err

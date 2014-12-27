@@ -24,6 +24,8 @@
     }
   ],
   "scripts": {
+    "compile": "coffee -o . -c src/index.coffee",
+    "postinstall": "npm run compile",
     "test": "mocha"
   },
   "engines": {
@@ -44,9 +46,12 @@
     "connect": "<2.18.0"
   },
   "devDependencies": {
+    "coffee-script": "^1.8.0",
     "gulp": "~3.5.1",
     "gulp-stylus": "0.0.11",
     "mocha": "^1.18.2",
+    "socket.io": "^1.2.1",
+    "socket.io-client": "^1.2.1",
     "supertest": "^0.10.0"
   }
 }

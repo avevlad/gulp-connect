@@ -167,6 +167,24 @@ gulp.task('connect', function() {
 });
 ```
 
+#### options.plugins
+
+Type: `Array`
+Default: `[]`
+
+```js
+gulp.task('connect', function() {
+  connect.server({
+    plugins: [function(server) {
+      var io = socketio(server);
+      io.on('connection', function(socket) {
+        // do stuff
+      });
+    }]
+  });
+});
+```
+
 ## Contributors
 
 [AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
