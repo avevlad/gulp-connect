@@ -1,5 +1,7 @@
 var request = require('supertest');
 var connect = require('../index');
+var socketio = require('socket.io');
+var client = require('socket.io-client');
 require('mocha');
 
 
@@ -118,6 +120,19 @@ describe('gulp-connect', function () {
         if (err) return done(err);
         done();
       });
+  })
+  it('Plugin test', function (done) {
+    connect.server({
+      plugins: [function(server) {
+        var io = socketio(server);
+      }]
+    });
+    
+    var socket = client('http://localhost:8080');
+    socket.on('connect', function(){
+      connect.serverClose();
+      done();
+    });
   })
   it('Livereload port', function (done) {
     connect.server({
