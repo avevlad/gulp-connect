@@ -38,7 +38,8 @@ class ConnectApp
       if err
         @log "Error on starting server: #{err}"
       else
-        @log "Server started http://#{opt.host}:#{opt.port}"
+        protocol = (if opt.https then "https" else "http")
+        @log "Server started #{protocol}://#{opt.host}:#{opt.port}"
         
         stoped = false;
         sockets = [];
