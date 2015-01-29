@@ -21,7 +21,7 @@ class ConnectApp
     @server()
 
   server: ->
-    app = connect()
+    @app = app = connect()
     @middleware().forEach (middleware) ->
       app.use middleware
     if opt.https?
@@ -39,10 +39,10 @@ class ConnectApp
         @log "Error on starting server: #{err}"
       else
         @log "Server started http://#{opt.host}:#{opt.port}"
-        
+
         stoped = false;
         sockets = [];
-        
+
         server.on 'close', =>
           if (!stoped)
             stoped = true
@@ -52,7 +52,7 @@ class ConnectApp
           sockets.push socket
           socket.on "close", =>
             sockets.splice sockets.indexOf(socket), 1
-        
+
         stopServer = =>
           if (!stoped)
             sockets.forEach (socket) =>
@@ -62,10 +62,10 @@ class ConnectApp
             process.nextTick( ->
               process.exit(0);
             )
-            
+
         process.on("SIGINT", stopServer);
         process.on("exit", stopServer);
-        
+
         if opt.livereload
           tiny_lr.Server::error = ->
           if opt.https?
