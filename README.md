@@ -167,6 +167,21 @@ gulp.task('connect', function() {
 });
 ```
 
+If your middleware needs to be mounted(for example you need to proxy `/api` endpoint), you can do next:
+```js
+var url = require('url');
+var proxy = require('proxy-middleware');
+gulp.task('connect', function() {
+  connect.server({
+    root: "app",
+    middleware: function(connect, opt) {
+      this.app.use('/api', proxy(url.parse("https://external-api.com")));
+      return [];
+    }
+  });
+});
+```
+
 ## Contributors
 
 [AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
