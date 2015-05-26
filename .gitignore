@@ -3,3 +3,4 @@
 node_modules
 index.js
 *.css
+*.iml

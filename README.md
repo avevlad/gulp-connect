@@ -154,6 +154,12 @@ Fallback file (e.g. `index.html`)
 Type: `Function`
 Default: `[]`
 
+#### options.debug
+
+Type: `Boolean`
+Default: `false`
+
+
 ```js
 gulp.task('connect', function() {
   connect.server({
