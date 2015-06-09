@@ -24,7 +24,7 @@ class ConnectApp
   server: ->
     app = connect()
     @middleware().forEach (middleware) ->
-      if typeof (middleware) is "array"
+      if typeof (middleware) is "object"
         app.use middleware[0], middleware[1]
       else
         app.use middleware
