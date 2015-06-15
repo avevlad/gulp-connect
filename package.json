@@ -37,16 +37,16 @@
     "server"
   ],
   "dependencies": {
-    "gulp-util": "~2.2.14",
-    "event-stream": "~3.1.0",
-    "connect-livereload": "~0.3.2",
-    "tiny-lr": "^0.0.7",
-    "connect": "<2.18.0"
+    "gulp-util": "~3.0.5",
+    "event-stream": "~3.3.1",
+    "connect-livereload": "~0.5.3",
+    "tiny-lr": "^0.1.6",
+    "connect": "<3.3.5"
   },
   "devDependencies": {
-    "gulp": "~3.5.1",
-    "gulp-stylus": "0.0.11",
-    "mocha": "^1.18.2",
-    "supertest": "^0.10.0"
+    "gulp": "~3.9.0",
+    "gulp-stylus": "2.0.4",
+    "mocha": "^2.2.5",
+    "supertest": "^1.0.1"
   }
 }
