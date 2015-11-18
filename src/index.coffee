@@ -124,4 +124,5 @@ module.exports =
         lr.changed body:
           files: file.path
       callback null, file
+  lr: lr
   serverClose: -> do server.close
