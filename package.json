@@ -19,6 +19,11 @@
       "url": "http://schickling.me/"
     },
     {
+      "name": "Justin Chase",
+      "email": "justin.m.chase@gmail.com",
+      "url": "http://justinmchase.com"
+    },
+    {
       "name": "Contributors",
       "homepage": "https://github.com/AveVlad/gulp-connect/graphs/contributors"
     }

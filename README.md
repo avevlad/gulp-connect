@@ -181,4 +181,6 @@ Then, to build the `index.js` file, run `coffee -o . -bc src/`. Run `npm test` t
 
 ## Contributors
 
-[AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
+* [AveVlad](https://github.com/AveVlad)
+* [schickling](https://github.com/schickling)
+* [justinmchase](https://github.com/justinmchase)
