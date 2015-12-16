@@ -173,6 +173,12 @@ gulp.task('connect', function() {
 });
 ```
 
+## Contributing
+
+To contribute to this project, you must have CoffeeScript installed: `npm install -g coffee-script`.
+
+Then, to build the `index.js` file, run `coffee -o . -bc src/`. Run `npm test` to run the tests.
+
 ## Contributors
 
 [AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
