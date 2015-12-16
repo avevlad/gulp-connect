@@ -24,7 +24,9 @@
     }
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "pretest": "coffee -o . -bc src/",
+    "postinstall": "coffee -o . -bc src/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -44,6 +46,7 @@
     "tiny-lr": "^0.2.1"
   },
   "devDependencies": {
+    "coffee-script": "^1.10.0",
     "gulp": "^3.9.0",
     "gulp-stylus": "^2.1.1",
     "mocha": "^2.3.4",
