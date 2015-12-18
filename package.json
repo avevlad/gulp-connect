@@ -1,6 +1,6 @@
 {
   "name": "gulp-connect",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "description": "Gulp plugin to run a webserver (with LiveReload)",
   "license": "MIT",
   "repository": {
@@ -19,12 +19,18 @@
       "url": "http://schickling.me/"
     },
     {
+      "name": "Justin Chase",
+      "email": "justin.m.chase@gmail.com",
+      "url": "http://justinmchase.com"
+    },
+    {
       "name": "Contributors",
       "homepage": "https://github.com/AveVlad/gulp-connect/graphs/contributors"
     }
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "pretest": "coffee -o . -bc src/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -37,16 +43,17 @@
     "server"
   ],
   "dependencies": {
-    "gulp-util": "~2.2.14",
-    "event-stream": "~3.1.0",
-    "connect-livereload": "~0.3.2",
-    "tiny-lr": "^0.0.7",
-    "connect": "<2.18.0"
+    "connect": "^2.30.0",
+    "connect-livereload": "^0.5.4",
+    "event-stream": "^3.3.2",
+    "gulp-util": "^3.0.6",
+    "tiny-lr": "^0.2.1"
   },
   "devDependencies": {
-    "gulp": "~3.5.1",
-    "gulp-stylus": "0.0.11",
-    "mocha": "^1.18.2",
-    "supertest": "^0.10.0"
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.0",
+    "gulp-stylus": "^2.1.1",
+    "mocha": "^2.3.4",
+    "supertest": "^1.1.0"
   }
 }

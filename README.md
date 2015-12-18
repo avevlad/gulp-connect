@@ -1,4 +1,4 @@
-gulp-connect [![Build Status](http://img.shields.io/travis/AveVlad/gulp-connect.svg?style=flat)](https://travis-ci.org/AveVlad/gulp-connect) [![](http://img.shields.io/npm/dm/gulp-connect.svg?style=flat)](https://www.npmjs.org/package/gulp-connect) [![](http://img.shields.io/npm/v/gulp-connect.svg?style=flat)](https://www.npmjs.org/package/gulp-connect)
+gulp-connect [![Build Status](http://img.shields.io/travis/AveVlad/gulp-connect.svg?style=flat-square)](https://travis-ci.org/AveVlad/gulp-connect) [![](http://img.shields.io/npm/dm/gulp-connect.svg?style=flat-square)](https://www.npmjs.org/package/gulp-connect) [![](http://img.shields.io/npm/v/gulp-connect.svg?style=flat-square)](https://www.npmjs.org/package/gulp-connect) [![Join the chat at https://gitter.im/AveVlad/gulp-connect](https://badges.gitter.im/AveVlad/gulp-connect.svg)](https://gitter.im/AveVlad/gulp-connect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ==============
 
 > Gulp plugin to run a webserver (with LiveReload)
@@ -154,6 +154,12 @@ Fallback file (e.g. `index.html`)
 Type: `Function`
 Default: `[]`
 
+#### options.debug
+
+Type: `Boolean`
+Default: `false`
+
+
 ```js
 gulp.task('connect', function() {
   connect.server({
@@ -167,6 +173,14 @@ gulp.task('connect', function() {
 });
 ```
 
+## Contributing
+
+To contribute to this project, you must have CoffeeScript installed: `npm install -g coffee-script`.
+
+Then, to build the `index.js` file, run `coffee -o . -bc src/`. Run `npm test` to run the tests.
+
 ## Contributors
 
-[AveVlad](https://github.com/AveVlad) and [schickling](https://github.com/schickling)
+* [AveVlad](https://github.com/AveVlad)
+* [schickling](https://github.com/schickling)
+* [justinmchase](https://github.com/justinmchase)

@@ -17,13 +17,17 @@ class ConnectApp
     opt.port = opt.port || "8080"
     opt.root = opt.root || path.dirname(module.parent.id)
     opt.host = opt.host || "localhost"
+    opt.debug = opt.debug || false
     @oldMethod("open") if opt.open
     @server()
 
   server: ->
     app = connect()
     @middleware().forEach (middleware) ->
-      app.use middleware
+      if typeof (middleware) is "object"
+        app.use middleware[0], middleware[1]
+      else
+        app.use middleware
     if opt.https?
       server = https.createServer
         key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
@@ -38,21 +42,25 @@ class ConnectApp
       if err
         @log "Error on starting server: #{err}"
       else
-        @log "Server started http://#{opt.host}:#{opt.port}"
-        
+        @log "Server started http#{if opt.https? then 's' else ''}://#{opt.host}:#{opt.port}"
+
         stoped = false;
         sockets = [];
-        
+
         server.on 'close', =>
           if (!stoped)
             stoped = true
             @log "Server stopped"
 
+        # Log connections and request in debug
         server.on "connection", (socket) =>
           sockets.push socket
           socket.on "close", =>
             sockets.splice sockets.indexOf(socket), 1
-        
+
+        server.on "request", (request, response) =>
+          @logDebug "Received request #{request.method} #{request.url}"
+
         stopServer = =>
           if (!stoped)
             sockets.forEach (socket) =>
@@ -62,10 +70,10 @@ class ConnectApp
             process.nextTick( ->
               process.exit(0);
             )
-            
+
         process.on("SIGINT", stopServer);
         process.on("exit", stopServer);
-        
+
         if opt.livereload
           tiny_lr.Server::error = ->
           if opt.https?
@@ -102,6 +110,10 @@ class ConnectApp
     if !opt.silent
       util.log util.colors.yellow(@text)
 
+  logDebug: (@text) ->
+    if opt.debug
+      util.log util.colors.blue(@text)
+
   oldMethod: (type) ->
     text = 'does not work in gulp-connect v 2.*. Please read "readme" https://github.com/AveVlad/gulp-connect'
     switch type
@@ -115,4 +127,5 @@ module.exports =
         lr.changed body:
           files: file.path
       callback null, file
+  lr: lr
   serverClose: -> do server.close
