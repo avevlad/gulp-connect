@@ -43,10 +43,10 @@ class ConnectApp
         @log "Error on starting server: #{err}"
       else
         @log "Server started http#{if opt.https? then 's' else ''}://#{opt.host}:#{opt.port}"
-        
+
         stoped = false;
         sockets = [];
-        
+
         server.on 'close', =>
           if (!stoped)
             stoped = true
@@ -60,7 +60,7 @@ class ConnectApp
 
         server.on "request", (request, response) =>
           @logDebug "Received request #{request.method} #{request.url}"
-        
+
         stopServer = =>
           if (!stoped)
             sockets.forEach (socket) =>
@@ -70,10 +70,10 @@ class ConnectApp
             process.nextTick( ->
               process.exit(0);
             )
-            
+
         process.on("SIGINT", stopServer);
         process.on("exit", stopServer);
-        
+
         if opt.livereload
           tiny_lr.Server::error = ->
           if opt.https?
@@ -90,7 +90,7 @@ class ConnectApp
     if opt.livereload
       opt.livereload = {}  if typeof opt.livereload is "boolean"
       opt.livereload.port = 35729  unless opt.livereload.port
-      middleware.push liveReload(port: opt.livereload.port)
+      middleware.unshift liveReload(port: opt.livereload.port)
     if typeof opt.root == "object"
       opt.root.forEach (path) ->
         middleware.push connect.static(path)
