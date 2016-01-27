@@ -23,13 +23,14 @@ class ConnectApp
     @fallback = options.fallback || undefined
     @oldMethod("open") if options.open
     @sockets = []
+    @app = undefined
     @run()
 
   run: ->
     @app = connect()
     @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
 
-    @handlers().forEach (middleware) ->
+    @handlers().forEach (middleware) =>
       if typeof (middleware) is "object"
         @app.use middleware[0], middleware[1]
       else
