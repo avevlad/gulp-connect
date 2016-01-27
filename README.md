@@ -142,6 +142,13 @@ Default: `false`
 Type: `Number`
 Default: `35729`
 
+Overrides the hostname of the script livereload injects in index.html
+
+#### options.livereload.hostname
+
+Type: `String`
+Default: 'undefined'
+
 #### options.fallback
 
 Type: `String`

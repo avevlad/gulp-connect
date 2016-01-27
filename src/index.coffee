@@ -103,7 +103,7 @@ class ConnectApp
     if @livereload
       @livereload = {}  if typeof @livereload is "boolean"
       @livereload.port = 35729  unless @livereload.port
-      steps.unshift liveReload(port: @livereload.port)
+      steps.unshift liveReload(@livereload.port)
     if typeof @root == "object"
       @root.forEach (path) ->
         steps.push connect.static(path)
