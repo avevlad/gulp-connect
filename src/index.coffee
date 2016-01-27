@@ -26,14 +26,14 @@ class ConnectApp
     @run()
 
   run: ->
-    app = connect()
-    app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
+    @app = connect()
+    @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
 
     @handlers().forEach (middleware) ->
       if typeof (middleware) is "object"
-        app.use middleware[0], middleware[1]
+        @app.use middleware[0], middleware[1]
       else
-        app.use middleware
+        @app.use middleware
 
     if @https
       @server = https.createServer
@@ -41,9 +41,9 @@ class ConnectApp
         cert: @https.cert || fs.readFileSync __dirname + '/certs/server.crt'
         ca: @https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
         passphrase: @https.passphrase || 'gulp'
-        app
+        @app
     else
-      @server = http.createServer app
+      @server = http.createServer @app
 
     @server.listen @port, (err) =>
       if err
