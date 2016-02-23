@@ -11,6 +11,10 @@ opt = {}
 server = undefined
 lr = undefined
 
+http2 = undefined
+try
+  http2 = require('http2')
+
 class ConnectApp
   constructor: (options) ->
     opt = options
@@ -29,7 +33,7 @@ class ConnectApp
       else
         app.use middleware
     if opt.https?
-      server = https.createServer
+      server = (http2 || https).createServer
         key: opt.https.key || fs.readFileSync __dirname + '/certs/server.key'
         cert: opt.https.cert || fs.readFileSync __dirname + '/certs/server.crt'
         ca: opt.https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
