@@ -10,6 +10,10 @@ tiny_lr = require("tiny-lr")
 lr = undefined
 apps = []
 
+http2 = undefined
+try
+  http2 = require('http2')
+
 class ConnectApp
   constructor: (options) ->
     @port = options.port || "8080"
@@ -37,7 +41,7 @@ class ConnectApp
         @app.use middleware
 
     if @https
-      @server = https.createServer
+      @server = (http2 || https).createServer
         key: @https.key || fs.readFileSync __dirname + '/certs/server.key'
         cert: @https.cert || fs.readFileSync __dirname + '/certs/server.crt'
         ca: @https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
