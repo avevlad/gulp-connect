@@ -32,7 +32,6 @@ class ConnectApp
 
   run: ->
     @app = connect()
-    @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
 
     @handlers().forEach (middleware) =>
       if typeof (middleware) is "object"
