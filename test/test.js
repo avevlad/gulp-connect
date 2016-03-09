@@ -4,17 +4,31 @@ require('mocha');
 
 
 describe('gulp-connect', function () {
-  it('Simple', function (done) {
-    connect.server();
-    request('http://localhost:8080')
-      .get('/fixtures/simplest/test.txt')
-      .expect(/Hello world/)
-      .expect(200)
-      .end(function (err, res) {
-        connect.serverClose();
-        if (err) return done(err);
-        done()
-      });
+  describe('Simple', function() {
+    var req;
+    before(function() {
+      connect.server();
+      req = request('http://localhost:8080');
+    })
+    after(function() {
+      connect.serverClose();
+    })
+    it('Explicit /test.txt', function (done) {
+      req.get('/fixtures/simplest/test.txt')
+        .expect(/Hello world/)
+        .expect(200)
+        .end(function (err, res) {
+          done(err);
+        });
+    })
+    it('Implicit /index.html', function (done) {
+      req.get('/fixtures/simplest/')
+        .expect(/index page/)
+        .expect(200)
+        .end(function (err, res) {
+          done(err);
+        });
+    })
   })
   it('Root string', function (done) {
     connect.server({
