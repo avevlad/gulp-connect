@@ -32,13 +32,14 @@ class ConnectApp
 
   run: ->
     @app = connect()
-    @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
 
     @handlers().forEach (middleware) =>
       if typeof (middleware) is "object"
         @app.use middleware[0], middleware[1]
       else
         @app.use middleware
+
+    @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
 
     if @https
       @server = (http2 || https).createServer
@@ -136,7 +137,7 @@ class ConnectApp
       when "open" then @logWarning("Option open #{text}")
 
 module.exports =
-  server: (options = {}) -> 
+  server: (options = {}) ->
     app = new ConnectApp(options)
     apps.push(app)
     app
