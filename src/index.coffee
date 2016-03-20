@@ -143,10 +143,11 @@ module.exports =
     app
   reload: ->
     es.map (file, callback) ->
-      if @livereload and typeof lr == "object"
-        lr.changed body:
-          files: file.path
-      callback null, file
+      apps.forEach (app) =>
+        if app.livereload and typeof lr == "object"
+          lr.changed body:
+            files: file.path
+        callback null, file
   lr: lr
   serverClose: ->
     apps.forEach((app) -> do app.server.close)
