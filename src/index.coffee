@@ -55,7 +55,7 @@ class ConnectApp
       if err
         @log "Error on starting server: #{err}"
       else
-        @log "Server started http#{if @https? then 's' else ''}://#{@host}:#{@port}"
+        @log "Server started http#{if @https then 's' else ''}://#{@host}:#{@port}"
 
         stoped = false;
         sockets = [];
