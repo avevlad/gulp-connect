@@ -43,16 +43,18 @@ class ConnectApp
 
     if @https
 
-      # first make sure it is always an object
-      if !(typeof (@https) is "object")
-        @https = {}
-
-      # use some defaults when not set. do not touch any other https options
+      # use some defaults when not set. do not touch when a key is already specified
       # see https://github.com/AveVlad/gulp-connect/issues/172
-      @https.key        = @https.key || fs.readFileSync __dirname + '/certs/server.key'
-      @https.cert       = @https.cert || fs.readFileSync __dirname + '/certs/server.crt'
-      @https.ca         = @https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
-      @https.passphrase = @https.passphrase || 'gulp'
+      if typeof (@https) is 'boolean' || !@https.key
+
+        # change it into an object if it is not already one
+        if !(typeof (@https) is "object")
+          @https = {}
+
+        @https.key        = fs.readFileSync __dirname + '/certs/server.key'
+        @https.cert       = fs.readFileSync __dirname + '/certs/server.crt'
+        @https.ca         = fs.readFileSync __dirname + '/certs/server.crt'
+        @https.passphrase = 'gulp'
 
       @server = (http2 || https).createServer(@https, @app)
     else
