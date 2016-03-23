@@ -147,7 +147,7 @@ module.exports =
         if app.livereload and typeof lr == "object"
           lr.changed body:
             files: file.path
-        callback null, file
+      callback null, file
   lr: lr
   serverClose: ->
     apps.forEach((app) -> do app.server.close)
