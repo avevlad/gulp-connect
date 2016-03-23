@@ -42,12 +42,19 @@ class ConnectApp
     @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
 
     if @https
-      @server = (http2 || https).createServer
-        key: @https.key || fs.readFileSync __dirname + '/certs/server.key'
-        cert: @https.cert || fs.readFileSync __dirname + '/certs/server.crt'
-        ca: @https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
-        passphrase: @https.passphrase || 'gulp'
-        @app
+
+      # first make sure it is always an object
+      if !(typeof (@https) is "object")
+        @https = {}
+
+      # use some defaults when not set. do not touch any other https options
+      # see https://github.com/AveVlad/gulp-connect/issues/172
+      @https.key        = @https.key || fs.readFileSync __dirname + '/certs/server.key'
+      @https.cert       = @https.cert || fs.readFileSync __dirname + '/certs/server.crt'
+      @https.ca         = @https.ca || fs.readFileSync __dirname + '/certs/ca.crt'
+      @https.passphrase = @https.passphrase || 'gulp'
+
+      @server = (http2 || https).createServer(@https, @app)
     else
       @server = http.createServer @app
 
@@ -57,8 +64,8 @@ class ConnectApp
       else
         @log "Server started http#{if @https? then 's' else ''}://#{@host}:#{@port}"
 
-        stoped = false;
-        sockets = [];
+        stoped = false
+        sockets = []
 
         @server.on "close", =>
           if (!stoped)
@@ -85,11 +92,11 @@ class ConnectApp
 
             @server.close()
             process.nextTick( ->
-              process.exit(0);
+              process.exit(0)
             )
 
-        process.on("SIGINT", stopServer);
-        process.on("exit", stopServer);
+        process.on("SIGINT", stopServer)
+        process.on("exit", stopServer)
 
         if @livereload
           tiny_lr.Server::error = ->
@@ -116,7 +123,7 @@ class ConnectApp
       steps.push connect.static(@root)
     if @fallback
       steps.push (req, res) =>
-        require('fs').createReadStream(@fallback).pipe(res);
+        require('fs').createReadStream(@fallback).pipe(res)
     return steps
 
   log: (text) ->
