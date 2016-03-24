@@ -129,8 +129,12 @@ Default: `localhost`
 
 #### options.https
 
-Type: `Boolean`
+Type: `Object`
 Default: `false`
+
+Can be any options documented at https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener
+
+When https is just set to `true` (boolean), then internally some defaults will be used.
 
 #### options.livereload
 
