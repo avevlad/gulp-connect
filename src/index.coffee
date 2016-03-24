@@ -53,7 +53,7 @@ class ConnectApp
 
         @https.key        = fs.readFileSync __dirname + '/certs/server.key'
         @https.cert       = fs.readFileSync __dirname + '/certs/server.crt'
-        @https.ca         = fs.readFileSync __dirname + '/certs/server.crt'
+        @https.ca         = fs.readFileSync __dirname + '/certs/ca.crt'
         @https.passphrase = 'gulp'
 
       @server = (http2 || https).createServer(@https, @app)
