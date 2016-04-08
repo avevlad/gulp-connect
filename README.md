@@ -3,6 +3,12 @@ gulp-connect [![Build Status](http://img.shields.io/travis/AveVlad/gulp-connect.
 
 > Gulp plugin to run a webserver (with LiveReload)
 
+## Sponsors
+
+gulp-connect is sponsored by [JetBrains](https://www.jetbrains.com/)!
+
+<a href="https://www.jetbrains.com/" taget="_blank">![](http://resources.jetbrains.com/assets/media/open-graph/jetbrains_250x250.png)</a>
+
 
 ## Install
 
