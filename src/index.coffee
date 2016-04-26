@@ -125,7 +125,13 @@ class ConnectApp
       steps.push connect.static(@root)
     if @fallback
       steps.push (req, res) =>
-        require('fs').createReadStream(@fallback).pipe(res)
+        fallbackPath = @fallback
+
+        if typeof @fallback is "function"
+          fallbackPath = @fallback(req, res)
+
+        require('fs').createReadStream(fallbackPath).pipe(res)
+
     return steps
 
   log: (text) ->
