@@ -7,7 +7,6 @@ fs = require("fs")
 connect = require("connect")
 liveReload = require("connect-livereload")
 tiny_lr = require("tiny-lr")
-lr = undefined
 apps = []
 
 http2 = undefined
@@ -28,6 +27,7 @@ class ConnectApp
     @oldMethod("open") if options.open
     @sockets = []
     @app = undefined
+    @lr = undefined
     @run()
 
   run: ->
@@ -103,13 +103,13 @@ class ConnectApp
         if @livereload
           tiny_lr.Server::error = ->
           if @https
-            lr = tiny_lr
+            @lr = tiny_lr
               key: @https.key || fs.readFileSync __dirname + '/certs/server.key'
               cert: @https.cert || fs.readFileSync __dirname + '/certs/server.crt'
           else
-            lr = tiny_lr()
+            @lr = tiny_lr()
 
-          lr.listen @livereload.port
+          @lr.listen @livereload.port
           @log "LiveReload started on port #{@livereload.port}"
 
   handlers: ->
@@ -159,11 +159,10 @@ module.exports =
   reload: ->
     es.map (file, callback) ->
       apps.forEach (app) =>
-        if app.livereload and typeof lr == "object"
-          lr.changed body:
+        if app.livereload and typeof app.lr == "object"
+          app.lr.changed body:
             files: file.path
       callback null, file
-  lr: lr
   serverClose: ->
     apps.forEach((app) -> do app.server.close)
     apps = []
