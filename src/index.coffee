@@ -23,6 +23,7 @@ class ConnectApp
     @https = options.https || false
     @livereload = options.livereload || false
     @middleware = options.middleware || undefined
+    @serverInit = options.serverInit || undefined
     @fallback = options.fallback || undefined
     @oldMethod("open") if options.open
     @sockets = []
@@ -59,7 +60,8 @@ class ConnectApp
       @server = (http2 || https).createServer(@https, @app)
     else
       @server = http.createServer @app
-
+    if @serverInit
+      @serverInit @server
     @server.listen @port, (err) =>
       if err
         @log "Error on starting server: #{err}"
