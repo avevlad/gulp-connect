@@ -15,6 +15,7 @@ try
 
 class ConnectApp
   constructor: (options) ->
+    @name = options.name || "Server"
     @port = options.port || "8080"
     @root = options.root || path.dirname(module.parent.id)
     @host = options.host || "localhost"
@@ -64,7 +65,7 @@ class ConnectApp
       if err
         @log "Error on starting server: #{err}"
       else
-        @log "Server started http#{if @https then 's' else ''}://#{@host}:#{@port}"
+        @log "#{@name} started http#{if @https then 's' else ''}://#{@host}:#{@port}"
 
         stoped = false
         sockets = []
@@ -72,7 +73,7 @@ class ConnectApp
         @server.on "close", =>
           if (!stoped)
             stoped = true
-            @log "Server stopped"
+            @log "#{@name} stopped"
 
         # Log connections and request in debug
         @server.on "connection", (socket) =>
