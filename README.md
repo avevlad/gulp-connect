@@ -77,6 +77,7 @@ var gulp = require('gulp'),
 
 gulp.task('connectDev', function () {
   connect.server({
+    name: 'Dev App',
     root: ['app', 'tmp'],
     port: 8000,
     livereload: true
@@ -85,6 +86,7 @@ gulp.task('connectDev', function () {
 
 gulp.task('connectDist', function () {
   connect.server({
+    name: 'Dist App',
     root: 'dist',
     port: 8001,
     livereload: true
@@ -109,7 +111,6 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connectDist', 'connectDev', 'watch']);
-
 ```
 
 ## API
@@ -132,6 +133,13 @@ The connect webserver port
 
 Type: `String`
 Default: `localhost`
+
+####options.name
+
+Type: `String`
+Default: `Server`
+
+The name that will be output when the server starts/stops.
 
 #### options.https
 
