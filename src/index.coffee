@@ -26,6 +26,7 @@ class ConnectApp
     @middleware = options.middleware || undefined
     @serverInit = options.serverInit || undefined
     @fallback = options.fallback || undefined
+    @index = if options.index then options.index else false
     @oldMethod("open") if options.open
     @sockets = []
     @app = undefined
@@ -123,9 +124,9 @@ class ConnectApp
       steps.unshift liveReload(@livereload)
     if typeof @root == "object"
       @root.forEach (path) ->
-        steps.push connect.static(path)
+        steps.push connect.static(path, {index: if @index is true then "index.html" else @index})
     else
-      steps.push connect.static(@root)
+      steps.push connect.static(@root, {index: if @index is true then "index.html" else @index})
     if @fallback
       steps.push (req, res) =>
         fallbackPath = @fallback
