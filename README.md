@@ -184,6 +184,10 @@ Default: `[]`
 Type: `Boolean`
 Default: `false`
 
+#### options.index
+
+Type: `Boolean or String of a new index pass or Array of new indexes in preferred order`
+Default: `true`
 
 ```js
 gulp.task('connect', function() {
