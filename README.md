@@ -113,6 +113,10 @@ gulp.task('watch', function () {
 gulp.task('default', ['connectDist', 'connectDev', 'watch']);
 ```
 
+#### http2 support
+
+If the [http2](https://www.npmjs.com/package/http2) package is installed and you use an https connection to gulp connect then http 2 will be used in preference to http 1.
+
 ## API
 
 #### options.root
