@@ -6,6 +6,7 @@ https = require("https")
 fs = require("fs")
 connect = require("connect")
 liveReload = require("connect-livereload")
+send = require("send")
 tiny_lr = require("tiny-lr")
 apps = []
 
@@ -135,7 +136,7 @@ class ConnectApp
         if typeof @fallback is "function"
           fallbackPath = @fallback(req, res)
 
-        require('fs').createReadStream(fallbackPath).pipe(res)
+        send(req, fallbackPath).pipe(res);
 
     return steps
 
