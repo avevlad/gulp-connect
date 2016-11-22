@@ -150,11 +150,12 @@ describe('gulp-connect', function () {
   })
   it('Fallback test', function (done) {
     connect.server({
-      fallback: __dirname + '/fixtures/simplest/test.txt'
+      fallback: __dirname + '/fixtures/simplest/index.html'
     });
     request('http://localhost:8080')
       .get('/not/existing/path')
-      .expect(/Hello world/)
+      .expect(/index page/)
+      .expect('Content-Type', new RegExp('text/html; charset=UTF-8'))
       .expect(200)
       .end(function (err, res) {
         connect.serverClose();

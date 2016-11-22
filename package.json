@@ -47,6 +47,7 @@
     "connect-livereload": "^0.5.4",
     "event-stream": "^3.3.2",
     "gulp-util": "^3.0.6",
+    "send": "^0.13.2",
     "tiny-lr": "^0.2.1"
   },
   "devDependencies": {
