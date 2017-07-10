@@ -138,7 +138,7 @@ The connect webserver port
 Type: `String`
 Default: `localhost`
 
-####options.name
+#### options.name
 
 Type: `String`
 Default: `Server`
