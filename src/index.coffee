@@ -134,7 +134,7 @@ class ConnectApp
       @log "Stopping server"
       if @livereload
         @lr.close()
-      @server.close()q
+      @server.close()
       @state = "stopped"
       @log "Stopped server"
     else if @state == "stopped"
