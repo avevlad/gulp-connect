@@ -43,6 +43,7 @@ gulp.task('connect', function() {
 
 gulp.task('html', function () {
   gulp.src('./app/*.html')
+    .pipe(gulp.dest('./app'))
     .pipe(connect.reload());
 });
 
@@ -95,6 +96,7 @@ gulp.task('connectDist', function () {
 
 gulp.task('html', function () {
   gulp.src('./app/*.html')
+    .pipe(gulp.dest('./app'))
     .pipe(connect.reload());
 });
 
