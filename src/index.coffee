@@ -65,7 +65,7 @@ class ConnectApp
       @server = http.createServer @app
     if @serverInit
       @serverInit @server
-    @server.listen @port, (err) =>
+    @server.listen @port, @host, (err) =>
       if err
         @log "Error on starting server: #{err}"
       else
