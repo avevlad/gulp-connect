@@ -16,7 +16,7 @@ try
   http2 = require('http2')
 
 class ConnectApp
-  constructor: (options) ->
+  constructor: (options, startedCallback) ->
     @name = options.name || "Server"
     @port = options.port || "8080"
     @root = options.root || path.dirname(module.parent.id)
@@ -26,6 +26,7 @@ class ConnectApp
     @https = options.https || false
     @livereload = options.livereload || false
     @middleware = options.middleware || undefined
+    @startedCallback = startedCallback || () -> {};
     @serverInit = options.serverInit || undefined
     @fallback = options.fallback || undefined
     @index =  options.index
@@ -33,9 +34,15 @@ class ConnectApp
     @sockets = []
     @app = undefined
     @lr = undefined
+    @state = "initializing"
     @run()
 
   run: ->
+    if @state == "stopped"
+      return
+
+    @state = "starting"
+    @log "Starting server..."
     @app = connect()
 
     @handlers().forEach (middleware) =>
@@ -99,6 +106,8 @@ class ConnectApp
               socket.destroy()
 
             @server.close()
+            if @livereload
+              @lr.close()
             process.nextTick( ->
               process.exit(0)
             )
@@ -117,6 +126,22 @@ class ConnectApp
 
           @lr.listen @livereload.port
           @log "LiveReload started on port #{@livereload.port}"
+        @state = "running";
+        @log "Running server"
+        @startedCallback()
+
+  close: ->
+    if @state == "running"
+      @log "Stopping server"
+      if @livereload
+        @lr.close()
+      @server.close()
+      @state = "stopped"
+      @log "Stopped server"
+    else if @state == "stopped"
+      @log "Server has already been stopped."
+    else
+      @log "Ignoring stop as server is in " + @state + " state."
 
   handlers: ->
     steps = if @middleware then @middleware.call(this, connect, @) else []
@@ -159,8 +184,8 @@ class ConnectApp
       when "open" then @logWarning("Option open #{text}")
 
 module.exports =
-  server: (options = {}) ->
-    app = new ConnectApp(options)
+  server: (options = {}, startedCallback = null) ->
+    app = new ConnectApp(options, startedCallback)
     apps.push(app)
     app
   reload: ->
@@ -171,5 +196,5 @@ module.exports =
             files: file.path
       callback null, file
   serverClose: ->
-    apps.forEach((app) -> do app.server.close)
+    apps.forEach((app) -> do app.close)
     apps = []
