@@ -31,6 +31,7 @@
   "scripts": {
     "test": "mocha",
     "pretest": "coffee -o . -bc src/"
+    "prepublish": "coffee -o . -bc src/"
   },
   "engines": {
     "node": ">=0.10.0"
