@@ -1,6 +1,7 @@
 path = require("path")
+fancyLog = require("fancy-log")
+colors = require("ansi-colors")
 es = require("event-stream")
-util = require("gulp-util")
 http = require("http")
 https = require("https")
 fs = require("fs")
@@ -142,15 +143,15 @@ class ConnectApp
 
   log: (text) ->
     if !@silent
-      util.log util.colors.green(text)
+      fancyLog colors.green(text)
 
   logWarning: (text) ->
     if !@silent
-      util.log util.colors.yellow(text)
+      fancyLog colors.yellow(text)
 
   logDebug: (text) ->
     if @debug
-      util.log util.colors.blue(text)
+      fancyLog colors.blue(text)
 
   oldMethod: (type) ->
     text = 'does not work in gulp-connect v 2.*. Please read "readme" https://github.com/AveVlad/gulp-connect'
