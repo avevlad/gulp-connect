@@ -68,7 +68,12 @@ class ConnectApp
         @https.ca         = fs.readFileSync __dirname + '/certs/server.crt'
         @https.passphrase = 'gulp'
 
-      @server = (http2 || https).createServer(@https, @app)
+      if http2
+        @https.allowHTTP1 = true
+        @server = http2.createSecureServer(@https, @app)
+      else
+        @server = https.createServer(@https, @app)
+
     else
       @server = http.createServer @app
     if @serverInit
