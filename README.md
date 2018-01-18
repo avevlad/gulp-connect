@@ -7,7 +7,7 @@ gulp-connect [![Build Status](http://img.shields.io/travis/AveVlad/gulp-connect.
 
 gulp-connect is sponsored by [JetBrains](https://www.jetbrains.com/)!
 
-<a href="https://www.jetbrains.com/" taget="_blank">![](http://resources.jetbrains.com/assets/media/open-graph/jetbrains_250x250.png)</a>
+<a href="https://www.jetbrains.com/" taget="_blank"><img src="jetbrains.png" height="150" width="150"></a>
 
 
 ## Install
