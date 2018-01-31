@@ -6,6 +6,8 @@ http = require("http")
 https = require("https")
 fs = require("fs")
 connect = require("connect")
+serveStatic = require('serve-static')
+serveIndex = require('serve-index')
 liveReload = require("connect-livereload")
 send = require("send")
 tiny_lr = require("tiny-lr")
@@ -51,7 +53,7 @@ class ConnectApp
       else
         @app.use middleware
 
-    @app.use connect.directory(if typeof @root == "object" then @root[0] else @root)
+    @app.use serveIndex(if typeof @root == "object" then @root[0] else @root)
 
     if @https
 
@@ -157,9 +159,9 @@ class ConnectApp
     if @index is true then @index = "index.html"
     if typeof @root == "object"
       @root.forEach (path) ->
-        steps.push connect.static(path, {index: @index})
+        steps.push serveStatic(path, {index: @index})
     else
-      steps.push connect.static(@root, {index: @index})
+      steps.push serveStatic(@root, {index: @index})
     if @fallback
       steps.push (req, res) =>
         fallbackPath = @fallback
