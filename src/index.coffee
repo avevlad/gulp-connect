@@ -26,6 +26,7 @@ class ConnectApp
     @debug = options.debug || false
     @silent = options.silent || false
     @https = options.https || false
+    @preferHttp1 = options.preferHttp1 || false;
     @livereload = options.livereload || false
     @middleware = options.middleware || undefined
     @startedCallback = startedCallback || () -> {};
@@ -70,7 +71,7 @@ class ConnectApp
         @https.ca         = fs.readFileSync __dirname + '/certs/server.crt'
         @https.passphrase = 'gulp'
 
-      if http2
+      if !@preferHttp1 && http2
         @https.allowHTTP1 = true
         @server = http2.createSecureServer(@https, @app)
       else
