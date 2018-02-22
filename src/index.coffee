@@ -13,10 +13,6 @@ send = require("send")
 tiny_lr = require("tiny-lr")
 apps = []
 
-http2 = undefined
-try
-  http2 = require('http2')
-
 class ConnectApp
   constructor: (options, startedCallback) ->
     @name = options.name || "Server"
@@ -71,7 +67,12 @@ class ConnectApp
         @https.ca         = fs.readFileSync __dirname + '/certs/server.crt'
         @https.passphrase = 'gulp'
 
-      if !@preferHttp1 && http2
+      http2 = undefined
+      if !@preferHttp1
+        try
+          http2 = require('http2')
+
+      if http2
         @https.allowHTTP1 = true
         @server = http2.createSecureServer(@https, @app)
       else
