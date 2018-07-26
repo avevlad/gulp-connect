@@ -5,11 +5,9 @@ require('mocha');
 var portCounter = 35000;
 describe('gulp-connect', function () {
   describe('Simple', function() {
-    var req;
-    var port;
     after(function() {
       connect.serverClose();
-    })
+    });
     it('Explicit /test.txt', function (done) {
       var port = portCounter++;
       connect.server({
@@ -23,7 +21,7 @@ describe('gulp-connect', function () {
             done(err);
           });
       });
-    })
+    });
     it('Implicit /index.html', function (done) {
       var port = portCounter++;
       connect.server({
@@ -39,11 +37,11 @@ describe('gulp-connect', function () {
       });
     })
   })
-})
+});
 describe('Self Start / Stop', function() {
   after(function() {
     connect.serverClose();
-  })
+  });
   it('Root string', function (done) {
     var port = portCounter++;
     connect.server({
@@ -58,7 +56,7 @@ describe('Self Start / Stop', function() {
         if (err) return done(err);
         done()
       });
-  })
+  });
   it('Root array', function (done) {
     var port = portCounter++;
     connect.server({
@@ -81,7 +79,7 @@ describe('Self Start / Stop', function() {
         if (err) return done(err);
         done()
       });
-  })
+  });
   it('Port test', function (done) {
     connect.server({
       root: __dirname + "/fixtures/multiple/app",
@@ -95,7 +93,7 @@ describe('Self Start / Stop', function() {
         if (err) return done(err);
         done()
       });
-  })
+  });
   it('Https test', function (done) {
     //suppress invalid self-signed ssl certificate error
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
@@ -113,7 +111,7 @@ describe('Self Start / Stop', function() {
         if (err) return done(err);
         done()
       });
-  })
+  });
   it('Livereload test', function (done) {
     var port = portCounter++;
     connect.server({
@@ -135,7 +133,7 @@ describe('Self Start / Stop', function() {
             });
         });
     });
-  })
+  });
   it('Livereload https test', function (done) {
     var port = portCounter++;
     connect.server({
@@ -158,7 +156,7 @@ describe('Self Start / Stop', function() {
             });
         });
     });
-  })
+  });
   it('Livereload port', function (done) {
     var port = portCounter++;
     var liveReloadPort = portCounter++;
@@ -178,7 +176,7 @@ describe('Self Start / Stop', function() {
           done();
         });
     });
-  })
+  });
   it('livereload closes', function (done) {
     this.timeout(10000);
     var port = portCounter++;
@@ -206,7 +204,7 @@ describe('Self Start / Stop', function() {
               })}, 100);
         })
     });
-  })
+  });
   it('Fallback test', function (done) {
     var port = portCounter++;
     connect.server({
@@ -225,4 +223,4 @@ describe('Self Start / Stop', function() {
         });
     });
   })
-})
+});
