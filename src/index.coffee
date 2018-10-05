@@ -56,7 +56,7 @@ class ConnectApp
 
       # use some defaults when not set. do not touch when a key is already specified
       # see https://github.com/AveVlad/gulp-connect/issues/172
-      if typeof (@https) is 'boolean' || !@https.key
+      if typeof (@https) is 'boolean' || (!@https.key && !@https.pfx)
 
         # change it into an object if it is not already one
         if !(typeof (@https) is "object")
