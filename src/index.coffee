@@ -1,7 +1,7 @@
 path = require("path")
 fancyLog = require("fancy-log")
 colors = require("ansi-colors")
-es = require("event-stream")
+mapStream = require("map-stream")
 http = require("http")
 https = require("https")
 fs = require("fs")
@@ -198,7 +198,7 @@ module.exports =
     apps.push(app)
     app
   reload: ->
-    es.map (file, callback) ->
+    mapStream (file, callback) ->
       apps.forEach (app) =>
         if app.livereload and typeof app.lr == "object"
           app.lr.changed body:
