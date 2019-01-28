@@ -19,8 +19,8 @@ npm install --save-dev gulp-connect
 ## Usage
 
 ```js
-var gulp = require('gulp'),
-  connect = require('gulp-connect');
+var gulp = require('gulp');
+var connect = require('gulp-connect');
 
 gulp.task('connect', function() {
   connect.server();
@@ -31,8 +31,8 @@ gulp.task('default', ['connect']);
 
 #### LiveReload
 ```js
-var gulp = require('gulp'),
-  connect = require('gulp-connect');
+var gulp = require('gulp');
+var connect = require('gulp-connect');
 
 gulp.task('connect', function() {
   connect.server({
@@ -72,9 +72,9 @@ gulp.task('jenkins-tests', function() {
 #### Multiple server
 
 ```js
-var gulp = require('gulp'),
-  stylus = require('gulp-stylus'),
-  connect = require('gulp-connect');
+var gulp = require('gulp');
+var connect = require('gulp-connect');
+var stylus = require('gulp-stylus');
 
 gulp.task('connectDev', function () {
   connect.server({
