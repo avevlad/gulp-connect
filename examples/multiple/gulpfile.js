@@ -1,6 +1,6 @@
-var gulp = require('gulp'),
-  stylus = require('gulp-stylus'),
-  connect = require('../../index');
+var gulp = require('gulp');
+var stylus = require('gulp-stylus');
+var connect = require('../../index');
 
 gulp.task('connectDev', function () {
   connect.server({
@@ -18,21 +18,21 @@ gulp.task('connectDist', function () {
   });
 });
 
-gulp.task('html', function () {
-  gulp.src('./app/*.html')
+function htmlTask(cb) {
+  return gulp.src('./app/*.html')
     .pipe(connect.reload());
-});
+}
 
-gulp.task('stylus', function () {
-  gulp.src('./app/stylus/*.styl')
+function stylusTask(cb) {
+  return gulp.src('./app/stylus/*.styl')
     .pipe(stylus())
     .pipe(gulp.dest('./app/css'))
     .pipe(connect.reload());
-});
+}
 
 gulp.task('watch', function () {
-  gulp.watch(['./app/*.html'], ['html']);
-  gulp.watch(['./app/stylus/*.styl'], ['stylus']);
+  gulp.watch(['./app/*.html'], gulp.series(htmlTask));
+  gulp.watch(['./app/stylus/*.styl'], gulp.series(stylusTask));
 });
 
 gulp.task('default', ['connectDist', 'connectDev', 'watch']);
