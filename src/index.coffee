@@ -17,7 +17,7 @@ class ConnectApp
   constructor: (options, startedCallback) ->
     @name = options.name || "Server"
     @port = options.port || "8080"
-    @root = options.root || path.dirname(module.parent.id)
+    @root = options.root || path.dirname(module?.parent?.id || ".")
     @host = options.host || "localhost"
     @debug = options.debug || false
     @silent = options.silent || false
