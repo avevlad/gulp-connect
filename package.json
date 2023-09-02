@@ -58,7 +58,7 @@
     "coffee-script": "^1.12.7",
     "gulp": "^4.0.0",
     "gulp-stylus": "^2.7.0",
-    "mocha": "^5.2.0",
+    "mocha": "^10.2.0",
     "supertest": "^3.1.0"
   }
 }
