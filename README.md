@@ -26,7 +26,7 @@ gulp.task('connect', function() {
   connect.server();
 });
 
-gulp.task('default', ['connect']);
+gulp.task('default', gulp.series('connect'));
 ```
 
 #### LiveReload
