@@ -55,7 +55,7 @@
     "tiny-lr": "^1.1.1"
   },
   "devDependencies": {
-    "coffee-script": "^1.12.7",
+    "coffee-script": "^1.1dasda2.7",
     "gulp": "^4.0.0",
     "gulp-stylus": "^2.7.0",
     "mocha": "^5.2.0",
